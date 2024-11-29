@@ -5,9 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </head>
 <body>
-    
+    <div class="mainContainer dark">
+        <div class="questionContainer">
+            <p>Puff pastry is made with yeast</p>
+        </div>
+        <div>
+            <button class="previousButton"></button>
+            <div class="answerContainer">
+                <label for="true">True</label>
+                <input type="radio" name="trueFalse" id="true" value="true">
+                <label for="false">False</label>
+                <input type="radio" name="trueFalse" id="false" value="false">
+            </div>
+            <button class="nextButton"></button>
+        </div>
+    </div>
 </body>
 </html>

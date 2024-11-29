@@ -1,0 +1,22 @@
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image:url("with white pastry related vectors wallpaper 94179.jpg");
+    background-size: 1000px;
+}
+
+div.mainContainer.dark{
+    width: 919px;
+    height: 546px;
+    border-radius: 40px;
+    background: linear-gradient(159deg, rgba(255, 255, 255, 0.40) 3.01%, rgba(255, 255, 255, 0.00) 103.3%);
+    backdrop-filter: blur(21px);
+    opacity: 0.98;
+    border: 1px solid transparent;
+    border-image: linear-gradient(300deg, rgb(19, 1, 66), rgb(255, 255, 255)) 1;
+    mask:
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
+}
