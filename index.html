@@ -12,15 +12,19 @@
         <div class="questionContainer">
             <p>Puff pastry is made with yeast</p>
         </div>
-        <div>
-            <button class="previousButton"></button>
+        <div class="answerAndButton">
+            <button class="previousButton"><img src="triangle-svgrepo-com-purple.png" alt="" width="100%"></button>
             <div class="answerContainer">
-                <label for="true">True</label>
-                <input type="radio" name="trueFalse" id="true" value="true">
-                <label for="false">False</label>
-                <input type="radio" name="trueFalse" id="false" value="false">
+                <div class="answerButtonWrap">
+                    <input class="checked" type="radio" name="trueFalse" id="true" value="true">
+                    <label class="label" for="true"><span>True</span></label>
+                </div>
+                <div class="answerButtonWrap">
+                    <input class="checked" type="radio" name="trueFalse" id="false" value="false">
+                    <label class="label" for="false"><span>False</span></label>
+                </div>
             </div>
-            <button class="nextButton"></button>
+            <button class="nextButton" ><img class="nextButtonImg" src="triangle-svgrepo-com-purple.png" width="100%"  alt=""></button>
         </div>
     </div>
 </body>

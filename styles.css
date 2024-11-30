@@ -4,7 +4,32 @@ body{
     justify-content: center;
     align-items: center;
     background-image:url("with white pastry related vectors wallpaper 94179.jpg");
-    background-size: 1000px;
+    background-size: 1420px;
+}
+
+div.mainContainer{
+    display: flex;
+    flex-direction: column;
+
+    .questionContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+
+        p{
+            font-size: 40px;
+            font-weight: 600;
+        }
+    }
+
+    .answerAndButton{
+        display: flex;
+        align-items: center;
+        padding: 40px;
+        justify-content: space-between;
+        flex-grow: 3;
+    }
 }
 
 div.mainContainer.dark{
@@ -19,4 +44,57 @@ div.mainContainer.dark{
     mask:
     linear-gradient(#000 0 0) content-box, 
     linear-gradient(#000 0 0);
+}
+
+div.answerContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;;
+}
+
+
+
+.answerButtonWrap input[type="radio"] {
+    display: none;
+}
+
+.answerButtonWrap label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.30);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    height: 80px;
+    width: 380px;
+    border-radius: 6px;
+    border: 1px solid #FFF;
+}
+
+.answerButtonWrap label:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(1.05);
+}
+
+.checked:checked + .label {
+    background-color:rgba(17, 103, 40, 0.6);
+}
+
+button{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    padding: 0;
+    background: none;
+    border: 0;
+    
+}
+
+button img.nextButtonImg{
+    transform: rotate(180deg);
+}
+button img:hover{
+    transform: scale(1.5);
 }
