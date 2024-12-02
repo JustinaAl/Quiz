@@ -26,11 +26,11 @@ let questionsAndAnswers=[{
         d:"d) Shortcrust pastry"
     }]
 
-let rightAnswers =["fa","fa","c)","d)",["a)","b)","d)"]]
-
 let i = 0;
 
+let rightAnswers =["fa","fa","c)","d)",["a)","b)","d)"]]
 let chechedValues =[];
+
 
 //Function that collects answers.
 function collectAnswers (){
@@ -44,6 +44,7 @@ function collectAnswers (){
         checked.forEach(value=>allValues.push(value.value))
         chechedValues.push(allValues);
     }
+    
 }
 
 
@@ -108,7 +109,7 @@ function createNewQuestion(questionText) {
     createAnswerButton();
 
     document.querySelector('.nextButton').addEventListener('click',() => {
-        collectAnswers ()
+        collectAnswers ();
         i++;
         if (i < questionsAndAnswers.length) {
             let newQuestionText = questionsAndAnswers[i].question;
@@ -126,5 +127,28 @@ function createNewQuestion(questionText) {
 
 }
 
+//Calls function for the first time and creates the first question card
 createNewQuestion(questionsAndAnswers[i].question);
+
+
+//Function that compares values of an array with correct answers and an array with chosen values
+let points = 0;
+
+function countPoints() {
+    if(Array.isArray(rightAnswers[i])){
+        for (let x=0; x<rightAnswers[i].length; x++){
+            if(rightAnswers[i][x] === chechedValues[i][x]){
+                points++;
+            }
+        }
+    }else{
+        if (rightAnswers[i]===chechedValues[i]){
+             points++;
+        }
+    }
+    
+}
+
+
+
 
