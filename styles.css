@@ -58,17 +58,21 @@ div.answerContainer{
     display: none;
 }
 
+.answerButtonWrap input[type="checkbox"] {
+    display: none;
+}
+
 .answerButtonWrap label {
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
-    font-size: 40px;
+    font-size:20px;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.30);
     transition: background-color 0.3s ease, transform 0.2s ease;
-    height: 80px;
-    width: 380px;
+    height: 50px;
+    width: 200px;
     border-radius: 6px;
     border: 1px solid #FFF;
 }
@@ -78,7 +82,11 @@ div.answerContainer{
     transform: scale(1.05);
 }
 
-.checked:checked + .label {
+.radio:checked + .label {
+    background-color:rgba(17, 103, 40, 0.6);
+}
+
+.checkbox:checked + .label {
     background-color:rgba(17, 103, 40, 0.6);
 }
 

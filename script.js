@@ -22,22 +22,39 @@ let questionsAndAnswers=[{
 
 let i = 0;
 
-function createAnswerButton(){
-    if(Object.keys(questionsAndAnswers[i].length === 3)){
-        let buttonContainer = document.querySelector(".answerContainer");
 
-        let answerButtonWrap = document.createElement("div")
-        answerButtonWrap.classList.add("answerButtonWrap")
-        answerButtonWrap.innerHTML=`<input class="checked" type="radio" name="trueFalse" id="${questionsAndAnswers[0].a}" value="${questionsAndAnswers[0].a}">
-                    <label class="label" for="${questionsAndAnswers[0].a}"><span>${questionsAndAnswers[0].a}</span></label>`
-        console.log(answerButtonWrap.innerHTML);
-        
-        buttonContainer.append(answerButtonWrap);
-    }
+//This function creates answer buttons
+function createAnswerButton(){
+    let buttonContainer = document.querySelector(".answerContainer");
+
+     Object.keys(questionsAndAnswers[i]).forEach((key, index) => {
+        if (index > 0) {
+            let answerButtonWrap = document.createElement("div");
+            answerButtonWrap.classList.add("answerButtonWrap");
+
+            let value = questionsAndAnswers[i][key];
+            //where only one answer is correct
+            if(i<3){
+                answerButtonWrap.innerHTML = `
+                <input class="radio" type="radio" name="oneTrue" id="${value.slice(0, 2)}" value="${value.slice(0, 2)}">
+                <label class="label" for="${value.slice(0, 2)}"><span>${value.charAt(0).toUpperCase()+ value.slice(1)}</span></label>
+            `;
+            //where multiple answers are correct
+            }else{
+                answerButtonWrap.innerHTML = `
+                <input class="checkbox" type="checkbox" name="fewTrue" id="${value.slice(0, 2)}" value="${value.slice(0, 2)}">
+                <label class="label" for="${value.slice(0, 2)}"><span>${value.charAt(0).toUpperCase()+ value.slice(1)}</span></label>
+            `;
+            }
+            
+            buttonContainer.append(answerButtonWrap);
+            console.log(answerButtonWrap);
+        }
+        });
+
 }
 
-createAnswerButton();
-
+//This function creates question card
 function createNewQuestion(questionText) {
 
     let newMainContainer = document.createElement('div');
@@ -83,7 +100,9 @@ function createNewQuestion(questionText) {
             createNewQuestion(newQuestionText);
         }
     });
+
 }
 
 createNewQuestion(questionsAndAnswers[i].question);
+
 
