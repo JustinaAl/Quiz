@@ -1,9 +1,9 @@
 let questionsAndAnswers=[{ 
-        question:"Baklava is made with puff pastry.",
+        question:"Puff pastry is made with yeast ",
         a:"true",
         b:"false"
-    },{
-        question:"An éclair is traditionally filled with whipped cream.",
+    },{ 
+        question:"Baklava is made with puff pastry.",
         a:"true",
         b:"false"
     },{
@@ -13,14 +13,38 @@ let questionsAndAnswers=[{
         c:"c) Puff pastry",
         d:"d) Choux pastry"
     },{
-        question:"Which?",
-        a:"a)",
-        b:"b)",
-        c:"c)",
-        d:"d)"
+        question:"Which ingredient is NOT typically used in a traditional French éclair?",
+        a:"a) Choux pastry",
+        b:"b) Vanilla custard",
+        c:"c) Chocolate glaze",
+        d:"d) Almond flour"
+    },{
+        question:"Which of the following are types of laminated dough?",
+        a:"a) Croissant",
+        b:"b) Puff pastry",
+        c:"c) Chocolate glaze",
+        d:"d) Shortcrust pastry"
     }]
 
+let rightAnswers =["fa","fa","c)","d)",["a)","b)","d)"]]
+
 let i = 0;
+
+let chechedValues =[];
+
+//Function that collects answers.
+function collectAnswers (){
+    let checked = document.querySelectorAll('input:checked');
+    if (checked.length < 2) {
+        checked.forEach(value => {
+            chechedValues.push(value.value)
+        });
+    }else{
+        let allValues = [];
+        checked.forEach(value=>allValues.push(value.value))
+        chechedValues.push(allValues);
+    }
+}
 
 
 //This function creates answer buttons
@@ -48,7 +72,6 @@ function createAnswerButton(){
             }
             
             buttonContainer.append(answerButtonWrap);
-            console.log(answerButtonWrap);
         }
         });
 
@@ -85,11 +108,11 @@ function createNewQuestion(questionText) {
     createAnswerButton();
 
     document.querySelector('.nextButton').addEventListener('click',() => {
+        collectAnswers ()
         i++;
         if (i < questionsAndAnswers.length) {
             let newQuestionText = questionsAndAnswers[i].question;
             createNewQuestion(newQuestionText);
-            
         }
     });
 
@@ -104,5 +127,4 @@ function createNewQuestion(questionText) {
 }
 
 createNewQuestion(questionsAndAnswers[i].question);
-
 

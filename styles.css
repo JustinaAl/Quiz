@@ -54,11 +54,7 @@ div.answerContainer{
 
 
 
-.answerButtonWrap input[type="radio"] {
-    display: none;
-}
-
-.answerButtonWrap input[type="checkbox"] {
+.answerButtonWrap input{
     display: none;
 }
 
@@ -82,11 +78,7 @@ div.answerContainer{
     transform: scale(1.05);
 }
 
-.radio:checked + .label {
-    background-color:rgba(17, 103, 40, 0.6);
-}
-
-.checkbox:checked + .label {
+input:checked + .label {
     background-color:rgba(17, 103, 40, 0.6);
 }
 
