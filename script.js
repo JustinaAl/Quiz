@@ -31,6 +31,24 @@ let i = 0;
 let rightAnswers =["fa","fa","c)","d)",["a)","b)","d)"]]
 let chechedValues =[];
 
+//Function that compares values of an array with correct answers and an array with chosen values and counts points
+let points = 0;
+
+function countPoints() {
+    if(Array.isArray(rightAnswers[i])){
+        for (let x=0; x<rightAnswers[i].length; x++){
+            if(rightAnswers[i][x] === chechedValues[i][x]){
+                points++;
+            }
+        }
+    }else{
+        if (rightAnswers[i]===chechedValues[i]){
+             points++;
+        }
+    }
+    
+}
+
 
 //Function that collects answers.
 function collectAnswers (){
@@ -81,40 +99,36 @@ function createAnswerButton(){
 //This function creates question card
 function createNewQuestion(questionText) {
 
-    let newMainContainer = document.createElement('div');
-    newMainContainer.classList.add('mainContainer');
+    let newMainContainer = document.querySelector(".mainContainer")
 
     newMainContainer.innerHTML = `
-        <div class="mainContainer dark">
         <div class="questionContainer">
             <p>${questionText}</p>
         </div>
         <div class="answerAndButton">
             <button class="previousButton"><img src="triangle-svgrepo-com-purple.png" alt="" width="100%"></button>
-            <div class="answerContainer">
-            </div>
+            <div class="answerContainer"> </div>
             <button class="nextButton" ><img class="nextButtonImg" src="triangle-svgrepo-com-purple.png" width="100%"  alt=""></button>
-        </div>
-    </div>
-    `;
-
-    let body = document.querySelector('body');
-    let mainContainer = document.querySelector('.mainContainer');
+        </div>`;
     
-    if (mainContainer) {
-        mainContainer.remove();
-    }
-    body.append(newMainContainer);
+    document.querySelector('body').append(newMainContainer);
 
     createAnswerButton();
 
     document.querySelector('.nextButton').addEventListener('click',() => {
-        collectAnswers ();
-        i++;
-        if (i < questionsAndAnswers.length) {
-            let newQuestionText = questionsAndAnswers[i].question;
-            createNewQuestion(newQuestionText);
-        }
+        let isChecked = document.querySelector("input:checked");
+
+        if(isChecked){
+            collectAnswers ();
+            countPoints();
+            console.log(points);
+            
+            i++;
+            if (i < questionsAndAnswers.length) {
+                let newQuestionText = questionsAndAnswers[i].question;
+                createNewQuestion(newQuestionText);
+            }
+            }
     });
 
     document.querySelector('.previousButton').addEventListener('click',() => {
@@ -124,30 +138,14 @@ function createNewQuestion(questionText) {
             createNewQuestion(newQuestionText);
         }
     });
-
-}
-
-//Calls function for the first time and creates the first question card
-createNewQuestion(questionsAndAnswers[i].question);
-
-
-//Function that compares values of an array with correct answers and an array with chosen values
-let points = 0;
-
-function countPoints() {
-    if(Array.isArray(rightAnswers[i])){
-        for (let x=0; x<rightAnswers[i].length; x++){
-            if(rightAnswers[i][x] === chechedValues[i][x]){
-                points++;
-            }
-        }
-    }else{
-        if (rightAnswers[i]===chechedValues[i]){
-             points++;
-        }
-    }
     
 }
+
+//Starts the game
+document.querySelector("#startGame").addEventListener("click",()=>{
+    createNewQuestion(questionsAndAnswers[i].question);
+})
+
 
 
 

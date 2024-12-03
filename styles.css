@@ -32,7 +32,7 @@ div.mainContainer{
     }
 }
 
-div.mainContainer.dark{
+div.mainContainer{
     width: 919px;
     height: 546px;
     border-radius: 40px;
@@ -54,11 +54,11 @@ div.answerContainer{
 
 
 
-.answerButtonWrap input{
+input{
     display: none;
 }
 
-.answerButtonWrap label {
+.answerButtonWrap .label {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +73,7 @@ div.answerContainer{
     border: 1px solid #FFF;
 }
 
-.answerButtonWrap label:hover {
+.answerButtonWrap .label:hover {
     background: rgba(255, 255, 255, 0.6);
     transform: scale(1.05);
 }
@@ -97,4 +97,9 @@ button img.nextButtonImg{
 }
 button img:hover{
     transform: scale(1.5);
+}
+
+div.mainContainer.first{
+    justify-content: space-evenly;
+    align-items: center;
 }
