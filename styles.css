@@ -82,7 +82,7 @@ input:checked + .label {
     background-color:rgba(17, 103, 40, 0.6);
 }
 
-button{
+button:not(.submit){
     width: 50px;
     height: 50px;
     cursor: pointer;
@@ -102,4 +102,38 @@ button img:hover{
 div.mainContainer.first{
     justify-content: space-evenly;
     align-items: center;
+}
+
+.mainContainer.results{
+    width: 90%;
+    min-height: 85%;
+    position: absolute;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.40);
+    
+    h1{
+        text-align: center;
+        margin: 5vh;
+    }
+
+    div.scoreBox{
+        display: flex;
+        justify-content: center;
+        gap: 10vw;
+
+        .score{
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #FFF;
+            text-align: center;
+        }
+    }
+
+    .allQuestions{
+        margin: 25px;
+
+        span{
+            margin:0 5em ;
+        }
+    }
 }

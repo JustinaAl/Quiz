@@ -31,6 +31,22 @@ let i = 0;
 let rightAnswers =["fa","fa","c)","d)",["a)","b)","d)"]]
 let chechedValues =[];
 
+
+//Function that collects answers.
+function collectAnswers (){
+    let checked = document.querySelectorAll('input:checked');
+    if (checked.length < 2) {
+        checked.forEach(value => {
+            chechedValues.push(value.value)
+        });
+    }else{
+        let allValues = [];
+        checked.forEach(value=>allValues.push(value.value))
+        chechedValues.push(allValues);
+    }
+    
+}
+
 //Function that compares values of an array with correct answers and an array with chosen values and counts points
 let points = 0;
 
@@ -49,20 +65,9 @@ function countPoints() {
     
 }
 
+//Function that prints out the results
+function theResults(){
 
-//Function that collects answers.
-function collectAnswers (){
-    let checked = document.querySelectorAll('input:checked');
-    if (checked.length < 2) {
-        checked.forEach(value => {
-            chechedValues.push(value.value)
-        });
-    }else{
-        let allValues = [];
-        checked.forEach(value=>allValues.push(value.value))
-        chechedValues.push(allValues);
-    }
-    
 }
 
 
@@ -99,9 +104,9 @@ function createAnswerButton(){
 //This function creates question card
 function createNewQuestion(questionText) {
 
-    let newMainContainer = document.querySelector(".mainContainer")
+    let mainContainer = document.querySelector(".mainContainer")
 
-    newMainContainer.innerHTML = `
+    mainContainer.innerHTML = `
         <div class="questionContainer">
             <p>${questionText}</p>
         </div>
@@ -111,7 +116,7 @@ function createNewQuestion(questionText) {
             <button class="nextButton" ><img class="nextButtonImg" src="triangle-svgrepo-com-purple.png" width="100%"  alt=""></button>
         </div>`;
     
-    document.querySelector('body').append(newMainContainer);
+    document.querySelector('body').append(mainContainer);
 
     createAnswerButton();
 
@@ -127,6 +132,13 @@ function createNewQuestion(questionText) {
             if (i < questionsAndAnswers.length) {
                 let newQuestionText = questionsAndAnswers[i].question;
                 createNewQuestion(newQuestionText);
+            }else{
+                mainContainer.innerHTML = "";
+                let submit = document.createElement("button");
+                submit.classList.add("submit");
+                submit.textContent = "Submit the answers"
+                mainContainer.append(submit);
+                submit.addEventListener("click",()=>theResults())
             }
             }
     });
@@ -134,6 +146,7 @@ function createNewQuestion(questionText) {
     document.querySelector('.previousButton').addEventListener('click',() => {
         if (i!==0){
             i--;
+            points--;
             let newQuestionText = questionsAndAnswers[i].question;
             createNewQuestion(newQuestionText);
         }
