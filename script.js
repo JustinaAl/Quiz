@@ -1,25 +1,25 @@
 let questionsAndAnswers=[{ 
-        question:"Puff pastry is made with yeast ",
+        question:"1. Puff pastry is made with yeast.",
         a:"true",
         b:"false"
     },{ 
-        question:"Baklava is made with puff pastry.",
+        question:"2. Baklava is made with puff pastry.",
         a:"true",
         b:"false"
     },{
-        question:"Which pastry is known for its flaky, buttery layers?",
+        question:"3. Which pastry is known for its flaky, buttery layers?",
         a:"a) Shortcrust pastry",
         b:"b) Phyllo pastry",
         c:"c) Puff pastry",
         d:"d) Choux pastry"
     },{
-        question:"Which ingredient is NOT typically used in a traditional French éclair?",
+        question:"4. Which ingredient is NOT typically used in a traditional French éclair?",
         a:"a) Choux pastry",
         b:"b) Vanilla custard",
         c:"c) Chocolate glaze",
         d:"d) Almond flour"
     },{
-        question:"Which of the following are types of laminated dough?",
+        question:"5. Which of the following are types of laminated dough?",
         a:"a) Croissant",
         b:"b) Puff pastry",
         c:"c) Chocolate glaze",
@@ -27,6 +27,7 @@ let questionsAndAnswers=[{
     }]
 
 let i = 0;
+let mainContainer = document.querySelector(".mainContainer")
 
 let rightAnswers =["fa","fa","c)","d)",["a)","b)","d)"]]
 let chechedValues =[];
@@ -67,7 +68,38 @@ function countPoints() {
 
 //Function that prints out the results
 function theResults(){
+    mainContainer.classList.remove("first");
+    mainContainer.classList.add("results");
 
+
+    mainContainer.innerHTML =`
+    <h1>Results</h1>
+        <div class="scoreBox">
+            <div class="score">
+                <h2>Your score</h2>
+                <p>${((points / rightAnswers.flat().length) * 100).toFixed(2)}%</p>
+            </div>
+            <div class="score">
+                <h2>Your points</h2>
+                <p>${points}/${rightAnswers.flat().length}</p>
+            </div>
+        </div>
+        <div class="allQuestions">
+            <div class="questionBox">
+                <p class="question">1. Puff pastry is made with yeast ?</p>
+                <p class="rightAnswer">Answer: Falses <span id="chosenAnswer">Your answer: False</span></p>
+            </div>
+        </div>`
+
+        //Prints out all the questions
+        questionsAndAnswers.forEach(question =>{
+            let questionBox = document.querySelector('.questionBox');
+            let aQuestion = document.createElement('p');
+            aQuestion.classList.add = "aQuestion";
+            aQuestion.textContent = question.question;
+
+            questionBox.append(aQuestion);
+        })
 }
 
 
@@ -104,8 +136,6 @@ function createAnswerButton(){
 //This function creates question card
 function createNewQuestion(questionText) {
 
-    let mainContainer = document.querySelector(".mainContainer")
-
     mainContainer.innerHTML = `
         <div class="questionContainer">
             <p>${questionText}</p>
@@ -138,7 +168,7 @@ function createNewQuestion(questionText) {
                 submit.classList.add("submit");
                 submit.textContent = "Submit the answers"
                 mainContainer.append(submit);
-                submit.addEventListener("click",()=>theResults())
+                submit.addEventListener("click",() => theResults())
             }
             }
     });
