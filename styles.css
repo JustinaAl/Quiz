@@ -137,3 +137,15 @@ div.mainContainer.first{
         }
     }
 }
+
+div.score.red{
+    color: red;
+}
+
+div.score.green{
+    color: green;
+}
+
+div.score.orange{
+    color: orange;
+}
