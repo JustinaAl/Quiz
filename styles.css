@@ -1,55 +1,120 @@
 body{
-    height: 100vh;
+    min-height: 100vh;
+    min-width: 100vw;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     background-image:url("with white pastry related vectors wallpaper 94179.jpg");
     background-size: 1420px;
+    margin: 0;
+}
+header{
+    width: 100%;
+    height: 7vh;
+    padding: 5px;
+    margin-bottom: 5vh;
+    background: rgba(255, 255, 255, 0.20);
+    backdrop-filter: blur(21px);
+    border-bottom: rgba(255, 255, 255, 0.2) 1px solid ;
+
+
+
+    a{
+        all: unset;
+        cursor: pointer;
+        color: #FFF;
+        font-family: "Gloria Hallelujah";
+        font-size: 25px;
+
+    }
+
+    div{
+        padding:0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+button{
+    font-family: "Gloria Hallelujah";
+}
+
+p{
+    color: rgb(18, 7, 53);
+    text-shadow: 2px 2px 15px rgba(255, 255, 255, 0.8);
 }
 
 div.mainContainer{
     display: flex;
     flex-direction: column;
+    max-width: 90%;
+    width: 900px;
+    min-height: 600px;
+    height: fit-content;
+    border-radius: 40px;
+    background: linear-gradient(159deg, rgba(255, 255, 255, 0.40) 3.01%, rgba(255, 255, 255, 0.00) 103.3%);
+    backdrop-filter: blur(21px);
+
+    border: 1px solid transparent;
+    border-image: linear-gradient(300deg, rgb(19, 1, 66), rgb(255, 255, 255)) 1;
+    mask:
+    linear-gradient(#000 0 0) content-box, 
+    linear-gradient(#000 0 0);
 
     .questionContainer{
         display: flex;
         justify-content: center;
         align-items: center;
         flex-grow: 1;
+        margin: 20px 35px 0 35px;
 
         p{
             font-size: 40px;
             font-weight: 600;
+            line-height: 40px;
         }
     }
 
     .answerAndButton{
         display: flex;
         align-items: center;
-        padding: 40px;
+        max-width: 100%;
+        padding: 0 4%;
         justify-content: space-between;
         flex-grow: 3;
     }
 }
 
-div.mainContainer{
-    width: 919px;
-    height: 546px;
-    border-radius: 40px;
-    background: linear-gradient(159deg, rgba(255, 255, 255, 0.40) 3.01%, rgba(255, 255, 255, 0.00) 103.3%);
-    backdrop-filter: blur(21px);
-    opacity: 0.98;
-    border: 1px solid transparent;
-    border-image: linear-gradient(300deg, rgb(19, 1, 66), rgb(255, 255, 255)) 1;
-    mask:
-    linear-gradient(#000 0 0) content-box, 
-    linear-gradient(#000 0 0);
+div.mainContainer.first{
+    justify-content: space-evenly;
+    align-items: center;
+
+    h1{
+        font-size: 50px;
+    }
+
+    button{
+        width: 250px;
+        height: 3.5em;
+        margin-bottom: 80px;
+
+        span{
+            font-size: 30px;
+        }
+    }
 }
+
+
 
 div.answerContainer{
     display: flex;
-    flex-direction: column;
-    gap: 50px;;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    width: 100%;
+    margin: 0 20px;
 }
 
 
@@ -63,12 +128,13 @@ input{
     justify-content: center;
     align-items: center;
     color: white;
-    font-size:20px;
+    font-size:30px;
     cursor: pointer;
     background: rgba(255, 255, 255, 0.30);
     transition: background-color 0.3s ease, transform 0.2s ease;
-    height: 50px;
-    width: 200px;
+    height: 60px;
+    width:260px;
+    min-width: fit-content;
     border-radius: 6px;
     border: 1px solid #FFF;
 }
@@ -92,16 +158,19 @@ button:not(.submit){
     
 }
 
+.previousButton{
+    max-width: 15%;
+}
+
+.nextButton{
+    max-width: 10%;
+}
+
 button img.nextButtonImg{
     transform: rotate(180deg);
 }
 button img:hover{
     transform: scale(1.5);
-}
-
-div.mainContainer.first{
-    justify-content: space-evenly;
-    align-items: center;
 }
 
 .mainContainer.results{
@@ -110,11 +179,7 @@ div.mainContainer.first{
     position: absolute;
     bottom: 0;
     background: rgba(255, 255, 255, 0.40);
-    
-    h1{
-        text-align: center;
-        margin: 5vh;
-    }
+
 
     div.scoreBox{
         display: flex;
@@ -148,4 +213,39 @@ div.score.green{
 
 div.score.orange{
     color: orange;
+}
+
+h1{
+    text-align: center;
+    margin: 5vh;
+    color: white;
+    font-family: "Gloria Hallelujah";
+}
+
+@media screen and (max-width: 400px){
+    div.mainContainer{
+        min-height: 500px;
+    }
+
+    div.mainContainer.first button{
+        min-width: 200px;
+        max-width: 210px;
+        max-height: 90px;
+    }
+
+    .questionContainer{
+        margin: 0 0px;
+    }
+
+    .answerButtonWrap .label {
+        width: 200px;
+    }
+
+}
+
+@media(max-width: 700px){
+
+    div.mainContainer.first button{
+        font-size: 20px;
+    }
 }

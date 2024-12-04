@@ -123,7 +123,6 @@ function countPoints() {
 
 //Function that prints out the results
 function theResults(){
-    mainContainer.classList.remove("first");
     mainContainer.classList.add("results");
 
 
@@ -271,6 +270,7 @@ function createNewQuestion(questionText) {
 
 //Starts the game
 document.querySelector("#startGame").addEventListener("click",()=>{
+    document.querySelector(".mainContainer").classList.remove("first");
     createNewQuestion(questionsAndAnswers[i].question);
 })
 
