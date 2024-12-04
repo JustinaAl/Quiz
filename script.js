@@ -85,21 +85,34 @@ function theResults(){
             </div>
         </div>
         <div class="allQuestions">
-            <div class="questionBox">
-                <p class="question">1. Puff pastry is made with yeast ?</p>
-                <p class="rightAnswer">Answer: Falses <span id="chosenAnswer">Your answer: False</span></p>
-            </div>
         </div>`
 
+            // <div class="questionBox">
+            //     <p class="question">1. Puff pastry is made with yeast ?</p>
+            //     <p class="rightAnswer">Answer: Falses <span id="chosenAnswer">Your answer: False</span></p>
+            // </div>
+
+
         //Prints out all the questions
-        questionsAndAnswers.forEach(question =>{
-            let questionBox = document.querySelector('.questionBox');
+        let allQuestions = document.querySelector(".allQuestions");
+
+        questionsAndAnswers.forEach(question => {
+            let questionBox = document.createElement('div');
+            questionBox.classList.add("questionBox");
+
             let aQuestion = document.createElement('p');
-            aQuestion.classList.add = "aQuestion";
+            aQuestion.classList.add("aQuestion"); 
             aQuestion.textContent = question.question;
 
             questionBox.append(aQuestion);
-        })
+            allQuestions.append(questionBox);
+            
+            let allQuestionBoxes = document.querySelectorAll(".questionBox")
+            //allQuestionBoxes.forEach(box)  create a p tag with class right anser
+        });
+
+        //let questionBoxes = document.querySelectorAll('.question')
+
 }
 
 
