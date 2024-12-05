@@ -4,8 +4,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image:url("with white pastry related vectors wallpaper 94179.jpg");
-    background-size: 1420px;
+    background: radial-gradient(68.97% 68.73% at 50% 50%, #1C008A 0%, #130060 29%, #0F0048 52%, #02000A 94%);
     margin: 0;
 }
 header{
@@ -176,7 +175,7 @@ button img:hover{
 }
 
 .mainContainer.results{
-    width: 90%;
+    width: 70%;
     height: fit-content;
     position: relative;
     bottom: 0;
@@ -211,19 +210,19 @@ button img:hover{
 }
 
 div.score.red{
-    color: rgb(110, 4, 4);
+    color: rgb(151, 1, 1);
 
     p{
-        color: rgb(110, 4, 4);
+        color: rgb(135, 2, 2);
         font-weight: 600;
     }
 }
 
 div.score.green{
-    color: rgb(50, 204, 50);
+    color: rgb(0, 113, 0);
 
     p{
-        color: rgb(50, 204, 50);
+        color: rgb(0, 113, 0);
         font-weight: 600;
     }
 }
@@ -246,7 +245,6 @@ h1{
 
 .darkLight{
     position: relative;
-    z-index: 1;
     width: 50px;
     height: 25px;
     border-radius: 20px;
@@ -274,7 +272,7 @@ h1{
 #darkLightInput{
     height: 20px;
     width: 20px;
-    z-index: 2;
+    z-index: 1;
     visibility: visible;
     position: relative;
     left:30px;
