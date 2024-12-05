@@ -17,7 +17,7 @@ header{
 
 
 
-    a{
+    a.dark{
         all: unset;
         cursor: pointer;
         color: #FFF;
@@ -322,8 +322,6 @@ header.light{
     backdrop-filter: blur(21px);
     box-shadow: rgba(231, 133, 133, 0.181) 0px 20px 20px -5px, rgba(183, 104, 104, 0.127) 0px 10px 10px -5px;
 
-
-
     a{
         color: #710808;
     }
@@ -337,32 +335,27 @@ p.light{
 
 div.mainContainer.light{
     background: linear-gradient(150deg, rgba(255, 90, 90, 0.282) 26.69%, rgba(255, 186, 186, 0.414) 68.65%);
+    border: 1px solid rgba(207, 118, 118, 0.277);
+
 }
 
 
 
 
-.answerButtonWrap .label .light{
-    /*  */
+.answerButtonWrap .label.light{
     color: rgb(113, 7, 7);
-    /*  */
+    border: #7108083e 1px solid;
 }
 
-/*  */
-.answerButtonWrap .label:hover .light{
-    background-color:rgba(113, 1, 150, 0.315);
-    color: white;
-    transform: scale(1.05);
-}
-
-input:checked + .label  .light{
+.answerButtonWrap .label.light:hover{
     background-color:rgba(113, 1, 150, 0.315);
     color: white;
 }
-/*  */
 
-
-
+input:checked + .label.light{
+    background-color:rgba(113, 1, 150, 0.315);
+    color: white;
+}
 
 .mainContainer.results.light{
     background: rgba(255, 170, 170, 0.5);
@@ -384,6 +377,21 @@ div.score.orange.light{
     }
 }
 
+#startGame.light{
+    color: rgb(76, 0, 0);
+    border: #8b222237 solid 1px;
+}
+
+#startGame.light:hover{
+    color: white;
+}
+
+.submit.light{
+    border: #8b222237 solid 1px;
+}
+.submit.light:hover{
+    transform: scale(1.2);
+}
 
 
 @media screen and (max-width: 400px){

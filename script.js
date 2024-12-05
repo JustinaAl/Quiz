@@ -80,6 +80,8 @@ let questionsAndAnswers=[{
         d:"d) Madeleines"
     }]
 
+let body = document.querySelector("body");
+
 let i = 0;
 let mainContainer = document.querySelector(".mainContainer")
 
@@ -197,6 +199,23 @@ function createAnswerButton(){
         }
         });
 
+        //dark light mode thing
+        if(darkLightInput.checked){
+            document.querySelectorAll('div.answerButtonWrap .label').forEach(label =>{label.classList.add("light")})
+        }
+
+
+        darkLightInput.addEventListener("change",()=>{
+            document.querySelector('.mainContainer').classList.add("light");
+            document.querySelectorAll(".answerButtonWrap .label").forEach(label => label.classList.add("light"));
+            if(!darkLightInput.checked){
+                document.querySelector('.mainContainer').classList.remove("light");
+                document.querySelectorAll(".answerButtonWrap .label").forEach(label => label.classList.remove("light"));
+            }
+    
+        })
+    
+
 }
 
 //This function creates question card
@@ -212,7 +231,7 @@ function createNewQuestion(questionText) {
             <button class="nextButton" ><img class="nextButtonImg" src="triangle-svgrepo-com-purple.png" width="100%"  alt=""></button>
         </div>`;
     
-    document.querySelector('body').append(mainContainer);
+    body.append(mainContainer);
 
     createAnswerButton();
 
@@ -234,6 +253,12 @@ function createNewQuestion(questionText) {
                 submit.classList.add("submit");
                 submit.textContent = "Submit the answers"
                 mainContainer.append(submit);
+
+                if(darkLightInput.checked){
+                    submit.classList.add("light");
+                }
+
+
                 submit.addEventListener("click",() => {
                     theResults()
 
@@ -254,7 +279,6 @@ function createNewQuestion(questionText) {
             }
             }
 
-            console.log(chechedValues);
             
     });
 
@@ -275,9 +299,23 @@ document.querySelector("#startGame").addEventListener("click",()=>{
     createNewQuestion(questionsAndAnswers[i].question);
 })
 
-//Function that colors green if answer was correct and colors red it answer was incorrect
 
 
+//Dark light mode button
 
-
+let darkLightInput = document.querySelector("#darkLightInput");
+darkLightInput.addEventListener("change",()=>{
+    if(darkLightInput.checked){
+        body.classList.add("light");
+        document.querySelector('header').classList.add("light");
+        document.querySelector('.mainContainer').classList.add("light");
+        document.querySelector('#startGame').classList.add("light");
+    }
+    else{
+        body.classList.remove("light");
+        document.querySelector('header').classList.remove("light");
+        document.querySelector('.mainContainer').classList.remove("light");
+        document.querySelector('#startGame').classList.remove("light");
+    }
+})
 
