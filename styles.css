@@ -1,6 +1,6 @@
 body{
     min-height: 100vh;
-    min-width: 100vw;
+    max-width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,6 @@ body{
 header{
     width: 100%;
     height: 7vh;
-    padding: 5px;
     margin-bottom: 5vh;
     background: rgba(255, 255, 255, 0.20);
     backdrop-filter: blur(21px);
@@ -29,7 +28,7 @@ header{
     }
 
     div{
-        padding:0 20px;
+        margin:0 10px 0 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -52,9 +51,11 @@ div.mainContainer{
     width: 900px;
     min-height: 600px;
     height: fit-content;
+    height: fit-content;
     border-radius: 40px;
     background: linear-gradient(159deg, rgba(255, 255, 255, 0.40) 3.01%, rgba(255, 255, 255, 0.00) 103.3%);
     backdrop-filter: blur(21px);
+    margin-bottom: 50px;
 
     border: 1px solid transparent;
     border-image: linear-gradient(300deg, rgb(19, 1, 66), rgb(255, 255, 255)) 1;
@@ -79,6 +80,7 @@ div.mainContainer{
     .answerAndButton{
         display: flex;
         align-items: center;
+        margin-bottom: 50px;
         max-width: 100%;
         padding: 0 4%;
         justify-content: space-between;
@@ -120,7 +122,7 @@ div.answerContainer{
 
 
 input{
-    display: none;
+    visibility: hidden;
 }
 
 .answerButtonWrap .label {
@@ -175,10 +177,10 @@ button img:hover{
 
 .mainContainer.results{
     width: 90%;
-    min-height: 85%;
-    position: absolute;
+    height: fit-content;
+    position: relative;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.40);
+    background: rgba(255, 255, 255, 0.50);
 
 
     div.scoreBox{
@@ -201,18 +203,38 @@ button img:hover{
             margin:0 5em ;
         }
     }
+
+    p{
+        font-size: 20px;
+        line-height: 10px;
+    }
 }
 
 div.score.red{
-    color: red;
+    color: rgb(110, 4, 4);
+
+    p{
+        color: rgb(110, 4, 4);
+        font-weight: 600;
+    }
 }
 
 div.score.green{
-    color: green;
+    color: rgb(50, 204, 50);
+
+    p{
+        color: rgb(50, 204, 50);
+        font-weight: 600;
+    }
 }
 
 div.score.orange{
     color: orange;
+
+    p{
+        color: orange;
+        font-weight: 600;
+    }
 }
 
 h1{
@@ -220,6 +242,75 @@ h1{
     margin: 5vh;
     color: white;
     font-family: "Gloria Hallelujah";
+}
+
+.darkLight{
+    position: relative;
+    z-index: 1;
+    width: 50px;
+    height: 25px;
+    border-radius: 20px;
+    background: linear-gradient(2deg, #6A6DFF 10.84%, #4532B1 54.34%, #1D005A 97.84%);
+    box-shadow: 2px 3px 6px 0px rgba(0, 0, 0, 0.32) inset;
+    transition: 0.3s;
+}
+
+.darkLight:after{
+    content: "";
+    position: absolute;
+    top: 2.5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 0;
+    margin-right: 7px;
+    background: #D9D9D9;
+    box-shadow: -2px 6px 7px 0px rgba(0, 0, 0, 0.31) inset;
+    transition: 0.3s;
+}
+
+#darkLightInput{
+    height: 20px;
+    width: 20px;
+    z-index: 2;
+    visibility: visible;
+    position: relative;
+    left:30px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#darkLightInput:checked{
+    left:50px;
+}
+
+#darkLightInput:checked + .darkLight{
+    background: linear-gradient(0deg, #FCF5D0 10%, #FFBE45 100%);
+    box-shadow: 2px 3px 6px 0px rgba(57, 28, 0, 0.32) inset;
+}
+
+#darkLightInput:checked + .darkLight:after{
+    left: 46px;
+    transform: translate(-100%);
+    background: #FFAF5A;
+    box-shadow: 2px 6px 7px 0px rgba(0, 0, 0, 0.31) inset;
+}
+
+button.submit{
+    border: 1px solid #ffffff93;
+    background: rgba(255, 255, 255, 0.329);
+    border-radius: 10px;
+    width: fit-content;
+    padding: 0 10px;
+    height: 50px;
+    font-size: 20px;
+    align-self: center;
+    margin: auto;
+    cursor: pointer;
+    font-weight: 600;
+    color: #0d0028;
 }
 
 @media screen and (max-width: 400px){
@@ -233,12 +324,19 @@ h1{
         max-height: 90px;
     }
 
-    .questionContainer{
+    .questionContainer{      
         margin: 0 0px;
     }
 
     .answerButtonWrap .label {
         width: 200px;
+    }
+
+    .mainContainer.results{
+
+        p{
+            line-height: 20px;
+        }
     }
 
 }

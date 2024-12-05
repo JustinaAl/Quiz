@@ -158,7 +158,8 @@ function theResults(){
 
             let correctAnswer = document.createElement("p");
             correctAnswer.classList.add("rightAnswer");
-            correctAnswer.innerHTML = `Correct answer: ${rightAnswers[x]} <span id="chosenAnswer">Your answer: ${chechedValues[x]}</span>`
+            correctAnswer.innerHTML = `Correct answer: ${rightAnswers[x]}
+            <p id="chosenAnswer">Your answer: ${chechedValues[x]}</p><br><br>`
             questionBox.append(correctAnswer);
             
             allQuestions.append(questionBox);
