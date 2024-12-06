@@ -218,6 +218,7 @@ function createAnswerButton(){
         //dark light mode thing
         if(darkLightInput.checked){
             document.querySelectorAll('div.answerButtonWrap .label').forEach(label =>{label.classList.add("light")});
+            document.querySelector('.whatNumber').classList.add("light");
         }
 
 
@@ -242,10 +243,19 @@ function createNewQuestion(questionText) {
             <p>${questionText}</p>
         </div>
         <div class="answerAndButton">
-            <button class="previousButton"><img src="images/previous.svg" alt="" width="100%"></button>
             <div class="answerContainer"> </div>
-            <button class="nextButton" ><img class="nextButtonImg" src="images/next.svg" width="100%"  alt=""></button>
+            <div class = "nextP">
+                <button class="previousButton"><img src="images/previous.svg" alt="" width="100%"></button>
+                <div class="whatNumber">${i}/${questionsAndAnswers.length}</div>
+                <button class="nextButton" ><img class="nextButtonImg" src="images/next.svg" width="100%"  alt=""></button>
+            </ div>
         </div>`;
+    
+    if(i>=10){
+        let span = document.createElement('span');
+        span.innerText = " (Multiple answers may be correct)";
+        document.querySelector(".questionContainer p").append(span)
+    }
     
     body.append(mainContainer);
 
@@ -275,7 +285,7 @@ function createNewQuestion(questionText) {
             }
             }
             
-    
+        
     });
 
     document.querySelector('.previousButton').addEventListener('click',() => {
@@ -335,11 +345,13 @@ function darkLight(){
         body.classList.add("light");
         document.querySelector('header').classList.add("light");
         document.querySelector('.mainContainer').classList.add("light");
+        document.querySelector('.whatNumber').classList.add("light");
     }
     else{
         body.classList.remove("light");
         document.querySelector('header').classList.remove("light");
         document.querySelector('.mainContainer').classList.remove("light");
+        document.querySelector('.whatNumber').classList.remove("light");
         if (!"#startGame") {
             document.querySelector('#startGame').classList.remove("light");
         }

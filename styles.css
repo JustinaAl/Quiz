@@ -48,6 +48,8 @@ div.mainContainer{
     max-width: 90%;
     width: 900px;
     min-height: 600px;
+    flex-wrap: wrap;
+    justify-content: space-between;
     height: fit-content;
     backdrop-filter: blur(10px);
     border-radius: 40px;
@@ -64,8 +66,8 @@ div.mainContainer{
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-grow: 1;
         margin: 20px 35px 0 35px;
+        flex-grow: 2;
 
         p{
             font-size: 40px;
@@ -76,12 +78,17 @@ div.mainContainer{
 
     .answerAndButton{
         display: flex;
+        justify-content: space-around;
+        flex-direction: column;
         align-items: center;
-        margin-bottom: 50px;
         max-width: 100%;
-        padding: 0 4%;
-        justify-content: space-between;
         flex-grow: 3;
+
+        .nextP{
+            display: flex;
+            align-items: center;
+            min-height: 100px;
+        }
     }
 }
 
@@ -110,6 +117,7 @@ div.mainContainer.first{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    max-width: 850px;
     justify-content: center;
     gap: 40px;
     width: 100%;
@@ -139,12 +147,12 @@ input{
 }
 
 .answerButtonWrap .label:hover {
-    background: rgba(17, 103, 40, 0.6);
+    background: rgba(35, 24, 107, 0.6);
     transform: scale(1.05);
 }
 
 input:checked + .label {
-    background-color:rgba(17, 103, 40, 0.6);
+    background-color:rgba(35, 24, 107, 0.6);
 }
 
 button:not(.submit){
@@ -157,13 +165,6 @@ button:not(.submit){
     
 }
 
-.previousButton{
-    max-width: 15%;
-}
-
-.nextButton{
-    max-width: 10%;
-}
 
 button img:hover{
     transform: scale(1.5);
@@ -229,6 +230,13 @@ div.score.orange{
         color: orange;
         font-weight: 600;
     }
+}
+
+.whatNumber{
+    display: inline;
+    font-size: 30px;
+    color: white;
+    margin: 0 15px;
 }
 
 h1{
@@ -310,6 +318,9 @@ button.submit:hover{
     transform: scale(1.2);
 }
 
+.questionContainer p span{
+    font-size: 18px;
+}
 
 /* ligh styling */
 
@@ -323,6 +334,10 @@ header.light{
     a{
         color: #710808;
     }
+}
+
+.whatNumber.light{
+    color: #5f1313;
 }
 
 p.light{

@@ -92,17 +92,3 @@ Answer: A) Éclair, B) Tarte Tatin, D) Madeleines
 (Éclair, tarte tatin, and madeleines are classic French pastries. Cannoli is Italian.)
 
 --------------------------------------------------------------------------------
-Level four Connect
-Match the pastry with its main ingredient:
-
-21.	Croissant
-o	Yeast dough
-22.	Éclair
-o	Choux pastry
-23.	Galette des Rois
-o	Puff pastry
-24.	Baklava
-o	Phyllo dough
-25.	Macaron
-o	Almond flour
-
