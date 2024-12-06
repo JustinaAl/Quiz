@@ -92,6 +92,7 @@ let darkLightInput = document.querySelector("#darkLightInput");
 let submit = document.createElement("button");
 
 
+
 //Function that collects answers.
 function collectAnswers (){
     let checked = document.querySelectorAll('input:not(#darkLightInput):checked');
@@ -110,14 +111,24 @@ function collectAnswers (){
 //Function that compares values of an array with correct answers and an array with chosen values and counts points
 let points = 0;
 
-
 function countPoints() {
     if(Array.isArray(rightAnswers[i])){
-        for (let x=0; x<rightAnswers[i].length; x++){
-            if(rightAnswers[i][x] === chechedValues[i][x]){
-                points++;
+        let rightArray = rightAnswers[i];
+        let chosenArray = chechedValues[i];
+        let rightArrayNew = new Map([rightArray]);
+
+
+        if(Array.isArray(chechedValues[i])){
+            for (let y=0; y<chechedValues[i].length; y++){
+                chosenArray.forEach(value=>{
+                    if(rightArrayNew.has(value)){
+                        points++;
+                    }
+                })
             }
-        }
+        }else if(rightArray.includes(chosenArray)){
+            points++;
+       }
     }else{
         if (rightAnswers[i]===chechedValues[i]){
              points++;
@@ -125,6 +136,8 @@ function countPoints() {
     }
     
 }
+
+
 
 //Function that prints out the results
 function theResults(){
@@ -245,7 +258,6 @@ function createNewQuestion(questionText) {
         if(isChecked){
             collectAnswers ();
             countPoints();
-            console.log(points);
             
             i++;
             if (i < questionsAndAnswers.length) {
@@ -262,17 +274,27 @@ function createNewQuestion(questionText) {
                 }
             }
             }
+            
     
     });
 
     document.querySelector('.previousButton').addEventListener('click',() => {
         if (i!==0){
             i--;
-            points--;
+            if(Array.isArray(chechedValues[i])){
+                let thePoints = chechedValues[i].length
+                points -= thePoints;
+            }else{
+                points--;
+            }
+            chechedValues.pop();
             let newQuestionText = questionsAndAnswers[i].question;
             createNewQuestion(newQuestionText);
         }
     });
+
+    console.log(points);
+    
     
 }
 
@@ -302,17 +324,13 @@ submit.addEventListener("click",() => {
 
 //Starts the game
 document.querySelector("#startGame").addEventListener("click",()=>{
-    if(darkLightInput.checked){
-        document.querySelector('#startGame').classList.remove("light");
-    }
     document.querySelector(".mainContainer").classList.remove("first");
     createNewQuestion(questionsAndAnswers[i].question);
 });
 
+//Dark light function
 
-
-//Dark light mode button
-darkLightInput.addEventListener("change",()=>{
+function darkLight(){
     if(darkLightInput.checked){
         body.classList.add("light");
         document.querySelector('header').classList.add("light");
@@ -322,7 +340,13 @@ darkLightInput.addEventListener("change",()=>{
         body.classList.remove("light");
         document.querySelector('header').classList.remove("light");
         document.querySelector('.mainContainer').classList.remove("light");
-        document.querySelector('#startGame').classList.remove("light");
+        if (!"#startGame") {
+            document.querySelector('#startGame').classList.remove("light");
+        }
     }
-});
+}
+
+
+//Dark light mode button
+darkLightInput.addEventListener("change",()=> darkLight());
 
