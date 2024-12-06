@@ -89,6 +89,7 @@ let rightAnswers =["False","False","False","False","True","c) Puff pastry","d) A
 let chechedValues =[];
 
 let darkLightInput = document.querySelector("#darkLightInput");
+let submit = document.createElement("button");
 
 
 //Function that collects answers.
@@ -252,7 +253,6 @@ function createNewQuestion(questionText) {
                 createNewQuestion(newQuestionText);
             }else{
                 mainContainer.innerHTML = "";
-                let submit = document.createElement("button");
                 submit.classList.add("submit");
                 submit.textContent = "Submit the answers";
                 mainContainer.append(submit);
@@ -260,30 +260,9 @@ function createNewQuestion(questionText) {
                 if(darkLightInput.checked){
                     submit.classList.add("light");
                 }
-
-
-                submit.addEventListener("click",() => {
-                    theResults();
-
-                    //Colors red or green
-                    let allPoinst = rightAnswers.flat().length;
-                    let procent = points/allPoinst * 100;
-                    let divScore = document.querySelectorAll('div.score');
-                    divScore.forEach(div =>{
-                        if(procent<50){
-                            div.classList.add("red");
-                        }else if(procent>=50 && procent<75){
-                            div.classList.add("orange");
-                        }else{
-                            div.classList.add("green");
-                        }
-                    });
-                });
             }
             }
     
-
-            
     });
 
     document.querySelector('.previousButton').addEventListener('click',() => {
@@ -296,6 +275,30 @@ function createNewQuestion(questionText) {
     });
     
 }
+
+
+//Function that changes result color
+function colourResult(){
+    let allPoinst = rightAnswers.flat().length;
+    let procent = points/allPoinst * 100;
+    let divScore = document.querySelectorAll('div.score');
+    divScore.forEach(div =>{
+        if(procent<50){
+            div.classList.add("red");
+        }else if(procent>=50 && procent<75){
+            div.classList.add("orange");
+        }else{
+            div.classList.add("green");
+        }
+    });
+}
+
+//submit button function
+submit.addEventListener("click",() => {
+    theResults();
+    colourResult();
+    
+});
 
 //Starts the game
 document.querySelector("#startGame").addEventListener("click",()=>{

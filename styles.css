@@ -306,6 +306,10 @@ button.submit{
     color: #0d0028;
 }
 
+button.submit:hover{
+    transform: scale(1.2);
+}
+
 
 /* ligh styling */
 
@@ -321,7 +325,6 @@ header.light{
     }
 }
 
-
 p.light{
     color: rgb(49, 0, 82);
     text-shadow: 2px 2px 15px rgba(41, 6, 65, 0.49);
@@ -331,11 +334,27 @@ div.mainContainer.light{
     background: linear-gradient(150deg, rgba(255, 90, 90, 0.282) 26.69%, rgba(255, 186, 186, 0.414) 68.65%);
     opacity: 0.6;
     border: 1px solid rgba(207, 118, 118, 0.277);
-    
-    p{
-        opacity: 1;
+
+    h1{
+        color: #5f1313;
     }
 
+}
+
+.mainContainer.first.light span{
+    color: #943434;
+}
+
+.mainContainer.first.light button{
+    border: 1px solid #5f1313;
+}
+
+.mainContainer.first.light button:hover{
+    background: rgba(113, 1, 150, 0.315);
+
+     span{
+        color: white;
+     }
 }
 
 .answerButtonWrap .label.light{
