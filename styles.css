@@ -11,9 +11,9 @@ header{
     width: 100%;
     height: 7vh;
     margin-bottom: 5vh;
+    backdrop-filter: blur(5px);
     background: rgba(255, 255, 255, 0.20);
     border-bottom: rgba(255, 255, 255, 0.2) 1px solid ;
-
 
 
     a.dark{
@@ -49,10 +49,11 @@ div.mainContainer{
     width: 900px;
     min-height: 600px;
     height: fit-content;
+    backdrop-filter: blur(10px);
     border-radius: 40px;
     background: linear-gradient(159deg, rgba(255, 255, 255, 0.40) 3.01%, rgba(255, 255, 255, 0.00) 103.3%);
     margin-bottom: 50px;
-
+    opacity:1;
     border: 1px solid transparent;
     border-image: linear-gradient(300deg, rgb(19, 1, 66), rgb(255, 255, 255)) 1;
     mask:
@@ -314,7 +315,7 @@ body.light{
 header.light{
     background: linear-gradient(112deg, rgba(236, 192, 192, 0.60) 26.69%, rgba(255, 236, 236, 0.60) 68.65%);
     box-shadow: rgba(231, 133, 133, 0.181) 0px 20px 20px -5px, rgba(183, 104, 104, 0.127) 0px 10px 10px -5px;
-
+    opacity: 0.8;
     a{
         color: #710808;
     }
@@ -328,7 +329,12 @@ p.light{
 
 div.mainContainer.light{
     background: linear-gradient(150deg, rgba(255, 90, 90, 0.282) 26.69%, rgba(255, 186, 186, 0.414) 68.65%);
+    opacity: 0.6;
     border: 1px solid rgba(207, 118, 118, 0.277);
+    
+    p{
+        opacity: 1;
+    }
 
 }
 
@@ -415,3 +421,161 @@ div.score.orange.light{
         font-size: 20px;
     }
 }
+
+/* Background animation */
+ .backgroundWrap{
+    position: absolute;
+    z-index: -1;
+    background-color:transparent;
+    width: 100%;
+    height: 100%;
+ }
+
+ .backgroundObject{
+    position: absolute;
+    opacity: 0.3;
+    width: 10vw;
+    animation: goDown linear 40s infinite;
+ }
+
+ .backgroundObject:first-of-type{
+    left: 2%;
+    top: -20%;
+ }
+
+ .backgroundObject:nth-of-type(2){
+    left: 20%;
+    top: -20%;
+ }
+
+ .backgroundObject:nth-of-type(3){
+    left: 40%;
+    top: -20%;
+ }
+
+ .backgroundObject:nth-of-type(4){
+    left: 60%;
+    top: -20%;
+ }
+
+ .backgroundObject:nth-of-type(5){
+    left: 80%;
+    top: -20%;
+ }
+
+ .backgroundObject:nth-of-type(6){
+    left: 2%;
+    top: -20%;
+    animation-delay: 10s;
+ }
+
+ .backgroundObject:nth-of-type(7){
+    left: 20%;
+    top: -20%;
+    animation-delay: 10s;
+ }
+
+ .backgroundObject:nth-of-type(8){
+    left: 40%;
+    top: -20%;
+    animation-delay: 10s;
+ }
+
+ .backgroundObject:nth-of-type(9){
+    left: 60%;
+    top: -20%;
+    animation-delay: 10s;
+ }
+
+ .backgroundObject:nth-of-type(10){
+    left: 80%;
+    top: -20%;
+    animation-delay: 10s;
+ }
+
+ .backgroundObject:nth-of-type(11){
+    left: 2%;
+    top: -20%;
+    animation-delay: 20s;
+ }
+
+ .backgroundObject:nth-of-type(12){
+    left: 20%;
+    top: -20%;
+    animation-delay: 20s;
+ }
+
+ .backgroundObject:nth-of-type(13){
+    left: 40%;
+    top: -20%;
+    animation-delay: 20s;
+ }
+
+ .backgroundObject:nth-of-type(14){
+    left: 60%;
+    top: -20%;
+    animation-delay: 20s;
+ }
+
+ .backgroundObject:nth-of-type(15){
+    left: 80%;
+    top: -20%;
+    animation-delay: 20s;
+ }
+
+ .backgroundObject:nth-of-type(16){
+    left: 2%;
+    top: -20%;
+    animation-delay: 30s;
+ }
+
+ .backgroundObject:nth-of-type(17){
+    left: 20%;
+    top: -20%;
+    animation-delay: 30s;
+ }
+
+ .backgroundObject:nth-of-type(18){
+    left: 40%;
+    top: -20%;
+    animation-delay: 30s;
+ }
+
+ .backgroundObject:nth-of-type(19){
+    left: 60%;
+    top: -20%;
+    animation-delay: 30s;
+ }
+
+ .backgroundObject:nth-of-type(20){
+    left: 80%;
+    top: -20%;
+    animation-delay: 30s;
+ }
+
+
+
+ @keyframes goDown {
+    0%{
+        transform: translateY(0);
+    }
+
+    25%{
+        rotate: 10deg;
+    }
+
+    50%{
+        rotate: -10deg;
+    }
+
+    75%{
+        rotate: 10deg;
+        opacity: 0.3;
+    }
+
+    100%{
+        rotate: -10deg;
+        opacity: 0;
+        transform: translateY(110vh);
+    }
+ }
