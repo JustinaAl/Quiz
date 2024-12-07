@@ -88,9 +88,36 @@ let mainContainer = document.querySelector(".mainContainer");
 let rightAnswers =["False","False","False","False","True","c) Puff pastry","d) Almond flour","c) Shortcrust pastry","c) Butter","b) Mille-feuille",["a) Croissant","b) Puff pastry","d) Danish pastry"],["a) Flour", "b) Butter", "c) Eggs"],["a) Galette des Rois", "c) Almond croissant", "d) Bakewell tart"],["a) Brioche", "c) Pain au chocolat"],["a) Éclair", "b) Tarte Tatin", "d) Madeleines"]];
 let chechedValues =[];
 
+
 let darkLightInput = document.querySelector("#darkLightInput");
 let submit = document.createElement("button");
 
+//Function that compares values of an array with correct answers and an array with chosen values and counts points
+let points = 0;
+
+function countPoints() {
+    for (let a = 0; a < rightAnswers.length; a++) {
+        if (Array.isArray(rightAnswers[a])) {
+            let rightArray = rightAnswers[a];
+            let chosenArray = chechedValues[a];
+            let rightArrayNew = new Map([rightArray]);
+
+            if (Array.isArray(chechedValues[a])) {
+                for (let y = 0; y < chechedValues[a].length; y++) {
+                    chosenArray.forEach(value => {
+                        if (rightArrayNew.has(value)) {
+                            points++;
+                        }
+                    })
+                }
+            } else if (rightArray.includes(chosenArray)) {
+                points++;
+            }
+        } else if (rightAnswers[a] === chechedValues[a]) {
+            points++;
+        }
+    }
+}
 
 
 //Function that collects answers.
@@ -107,35 +134,6 @@ function collectAnswers (){
     }
     
 }
-
-//Function that compares values of an array with correct answers and an array with chosen values and counts points
-let points = 0;
-function countPoints() {
-    if(Array.isArray(rightAnswers[i])){
-        let rightArray = rightAnswers[i];
-        let chosenArray = chechedValues[i];
-        let rightArrayNew = new Map([rightArray]);
-
-        if(Array.isArray(chechedValues[i])){
-            for (let y=0; y<chechedValues[i].length; y++){
-                chosenArray.forEach(value=>{
-                    if(rightArrayNew.has(value)){
-                        points++;
-                    }
-                })
-            }
-        }else if(rightArray.includes(chosenArray)){
-            points++;
-       }
-    }else{
-        if (rightAnswers[i]===chechedValues[i]){
-             points++;
-        }
-    }
-    
-}
-
-
 
 //Function that prints out the results
 function theResults(){
@@ -218,12 +216,6 @@ function createAnswerButton(){
 function buttonPrevious() {
     if (i!==0){
         i--;
-        if(Array.isArray(chechedValues[i])){
-            let thePoints = chechedValues[i].length
-            points -= thePoints;
-        }else{
-            points--;
-        }
         chechedValues.pop();
         let newQuestionText = questionsAndAnswers[i].question;
         createNewQuestion(newQuestionText);
@@ -236,7 +228,6 @@ function buttonNext() {
 
     if(isChecked){
         collectAnswers ();
-        countPoints();
         i++;
 
         if (i < questionsAndAnswers.length) {
@@ -305,6 +296,7 @@ function colourResult(){
 
 //submit button function
 submit.addEventListener("click",() => {
+    countPoints();
     theResults();
     colourResult();
     
