@@ -15,15 +15,15 @@
         <div class="backgroundObject"><img src="background/cupcake-svg.svg" width="100%" alt=""></div>
         <div class="backgroundObject"><img src="/background/croisant-svg.svg" width="100%" alt="100%"></div>
         <div class="backgroundObject"><img src="/background/whisk-svg.svg" width="100%" alt="100%"></div>
-        <div class="backgroundObject"><img src="/background/cupcake-svg.svg" width="100%" alt=""></div>
         <div class="backgroundObject"><img src="/background/wheat-svg.svg" width="100%" alt=""></div>
+        <div class="backgroundObject"><img src="/background/cupcake-svg.svg" width="100%" alt=""></div>
         <div class="backgroundObject"><img src="/background/whisk-svg.svg" width="100%" alt=""></div>
         <div class="backgroundObject"><img src="/background/cupcake-svg.svg" width="100%" alt=""></div>
         <div class="backgroundObject"><img src="background/wheat-svg.svg" width="100%" alt=""></div>
         <div class="backgroundObject"><img src="/background/croisant-svg.svg" width="100%" alt=""></div>
         <div class="backgroundObject"><img src="/background/whisk-svg.svg" width="100%" alt=""></div>
-        <div class="backgroundObject"><img src="background/cupcake-svg.svg" width="100%" alt=""></div>
         <div class="backgroundObject"><img src="/background/croisant-svg.svg" width="100%" alt="100%"></div>
+        <div class="backgroundObject"><img src="background/cupcake-svg.svg" width="100%" alt=""></div>
         <div class="backgroundObject"><img src="/background/whisk-svg.svg" width="100%" alt="100%"></div>
         <div class="backgroundObject"><img src="/background/cupcake-svg.svg" width="100%" alt=""></div>
         <div class="backgroundObject"><img src="/background/wheat-svg.svg" width="100%" alt=""></div>
@@ -36,9 +36,19 @@
     <header>
         <div>
             <a href="index.html" class="dark">The quiz</a>
-            <div class="darkLightBox">
-                <input type="checkbox" id="darkLightInput">
-                <label for="darkLight" id="darkLightLabel" class="darkLight"></label>
+            <div class="buttons">
+                <div class="animationButton">
+                    <input type="checkbox" id="disableAnimation">
+                    <label for="disableAnimation"></label>
+                </div>
+                <div class="musicBox">
+                    <input type="checkbox" id="music" >
+                    <label for="music"></label>
+                </div>
+                <div class="darkLightBox">
+                    <input type="checkbox" id="darkLightInput">
+                    <label for="darkLightInput" id="darkLightLabel" class="darkLight"></label>
+                </div>
             </div>
         </div>
     </header>
@@ -46,6 +56,7 @@
         <h1>The Quiz</h1>
         <div class="answerButtonWrap">
             <button class="label" id="startGame"><span>Start game</span></button>
+            <div class="label" id="credits"><a href="credits.html">Credits</a></div>
         </div>
     </div>
 </body>

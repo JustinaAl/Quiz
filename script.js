@@ -95,7 +95,7 @@ let submit = document.createElement("button");
 
 //Function that collects answers.
 function collectAnswers (){
-    let checked = document.querySelectorAll('input:not(#darkLightInput):checked');
+    let checked = document.querySelectorAll('input:not(#darkLightInput):not(#disableAnimation):not(#music):checked');
     if (checked.length < 2) {
         checked.forEach(value => {
             chechedValues.push(value.value);
@@ -110,13 +110,11 @@ function collectAnswers (){
 
 //Function that compares values of an array with correct answers and an array with chosen values and counts points
 let points = 0;
-
 function countPoints() {
     if(Array.isArray(rightAnswers[i])){
         let rightArray = rightAnswers[i];
         let chosenArray = chechedValues[i];
         let rightArrayNew = new Map([rightArray]);
-
 
         if(Array.isArray(chechedValues[i])){
             for (let y=0; y<chechedValues[i].length; y++){
@@ -143,7 +141,6 @@ function countPoints() {
 function theResults(){
     mainContainer.classList.add("results");
 
-
     mainContainer.innerHTML =`
     <h1>Results</h1>
         <div class="scoreBox">
@@ -158,7 +155,6 @@ function theResults(){
         </div>
         <div class="allQuestions">
         </div>`;
-
 
     //Prints out all the questions
     let allQuestions = document.querySelector(".allQuestions");
@@ -176,10 +172,9 @@ function theResults(){
 
         let correctAnswer = document.createElement("p");
         correctAnswer.classList.add("rightAnswer");
-        correctAnswer.innerHTML = `Correct answer: ${rightAnswers[x]}
-        <p id="chosenAnswer">Your answer: ${chechedValues[x]}</p><br><br>`;
-        questionBox.append(correctAnswer);
+        correctAnswer.innerHTML = `Correct answer: ${rightAnswers[x]} <p id="chosenAnswer">Your answer: ${chechedValues[x]}</p><hr>`;
         
+        questionBox.append(correctAnswer);
         allQuestions.append(questionBox);
     });
 
@@ -189,7 +184,6 @@ function theResults(){
 
 //This function creates answer buttons
 function createAnswerButton(){
-    let buttonContainer = document.querySelector(".answerContainer");
 
      Object.keys(questionsAndAnswers[i]).forEach((key, index) => {
         if (index > 0) {
@@ -201,17 +195,14 @@ function createAnswerButton(){
             if(i<10){
                 answerButtonWrap.innerHTML = `
                 <input class="radio" type="radio" name="oneTrue" id="${value.slice(0, 2)}" value="${value}">
-                <label class="label" for="${value.slice(0, 2)}"><span>${value}</span></label>
-            `;
+                <label class="label" for="${value.slice(0, 2)}"><span>${value}</span></label>`;
             //where multiple answers are correct
             }else{
                 answerButtonWrap.innerHTML = `
                 <input class="checkbox" type="checkbox" name="fewTrue" id="${value.slice(0, 2)}" value="${value}">
-                <label class="label" for="${value.slice(0, 2)}"><span>${value}</span></label>
-            `;
+                <label class="label" for="${value.slice(0, 2)}"><span>${value}</span></label>`;
             }
-            
-            buttonContainer.append(answerButtonWrap);
+            document.querySelector(".answerContainer").append(answerButtonWrap);
         }
     });
 
@@ -220,19 +211,49 @@ function createAnswerButton(){
             document.querySelectorAll('div.answerButtonWrap .label').forEach(label =>{label.classList.add("light")});
             document.querySelector('.whatNumber').classList.add("light");
         }
+}
 
 
-        darkLightInput.addEventListener("change",()=>{
-            document.querySelector('.mainContainer').classList.add("light");
-            document.querySelectorAll(".answerButtonWrap .label").forEach(label => label.classList.add("light"));
-            if(!darkLightInput.checked){
-                document.querySelector('.mainContainer').classList.remove("light");
-                document.querySelectorAll(".answerButtonWrap .label").forEach(label => label.classList.remove("light"));
+//Previous button function
+function buttonPrevious() {
+    if (i!==0){
+        i--;
+        if(Array.isArray(chechedValues[i])){
+            let thePoints = chechedValues[i].length
+            points -= thePoints;
+        }else{
+            points--;
+        }
+        chechedValues.pop();
+        let newQuestionText = questionsAndAnswers[i].question;
+        createNewQuestion(newQuestionText);
+    }
+}
+
+//Next button
+function buttonNext() {
+    let isChecked = document.querySelector("input:not(#darkLightInput):not(#disableAnimation):not(#music):checked");
+
+    if(isChecked){
+        collectAnswers ();
+        countPoints();
+        i++;
+
+        if (i < questionsAndAnswers.length) {
+            let newQuestionText = questionsAndAnswers[i].question;
+            createNewQuestion(newQuestionText);
+        }else{
+            mainContainer.innerHTML = "";
+            submit.classList.add("submit");
+            submit.textContent = "Submit the answers";
+            mainContainer.append(submit);
+
+            if(darkLightInput.checked){
+                submit.classList.add("light");
             }
-    
-        });
-    
-
+        }
+        }
+        
 }
 
 //This function creates question card
@@ -246,7 +267,7 @@ function createNewQuestion(questionText) {
             <div class="answerContainer"> </div>
             <div class = "nextP">
                 <button class="previousButton"><img src="images/previous.svg" alt="" width="100%"></button>
-                <div class="whatNumber">${i}/${questionsAndAnswers.length}</div>
+                <div class="whatNumber">${i+1}/${questionsAndAnswers.length}</div>
                 <button class="nextButton" ><img class="nextButtonImg" src="images/next.svg" width="100%"  alt=""></button>
             </ div>
         </div>`;
@@ -258,53 +279,10 @@ function createNewQuestion(questionText) {
     }
     
     body.append(mainContainer);
-
     createAnswerButton();
 
-    document.querySelector('.nextButton').addEventListener('click',() => {
-        
-        let isChecked = document.querySelector("input:not(#darkLightInput):checked");
-
-        if(isChecked){
-            collectAnswers ();
-            countPoints();
-            
-            i++;
-            if (i < questionsAndAnswers.length) {
-                let newQuestionText = questionsAndAnswers[i].question;
-                createNewQuestion(newQuestionText);
-            }else{
-                mainContainer.innerHTML = "";
-                submit.classList.add("submit");
-                submit.textContent = "Submit the answers";
-                mainContainer.append(submit);
-
-                if(darkLightInput.checked){
-                    submit.classList.add("light");
-                }
-            }
-            }
-            
-        
-    });
-
-    document.querySelector('.previousButton').addEventListener('click',() => {
-        if (i!==0){
-            i--;
-            if(Array.isArray(chechedValues[i])){
-                let thePoints = chechedValues[i].length
-                points -= thePoints;
-            }else{
-                points--;
-            }
-            chechedValues.pop();
-            let newQuestionText = questionsAndAnswers[i].question;
-            createNewQuestion(newQuestionText);
-        }
-    });
-
-    console.log(points);
-    
+    document.querySelector('.nextButton').addEventListener('click',() => buttonNext());
+    document.querySelector('.previousButton').addEventListener('click',() => buttonPrevious());
     
 }
 
@@ -338,27 +316,63 @@ document.querySelector("#startGame").addEventListener("click",()=>{
     createNewQuestion(questionsAndAnswers[i].question);
 });
 
-//Dark light function
 
+//Dark light function
 function darkLight(){
     if(darkLightInput.checked){
         body.classList.add("light");
         document.querySelector('header').classList.add("light");
         document.querySelector('.mainContainer').classList.add("light");
-        document.querySelector('.whatNumber').classList.add("light");
+        document.querySelectorAll(".answerButtonWrap .label").forEach(label => label.classList.add("light"));
     }
     else{
         body.classList.remove("light");
         document.querySelector('header').classList.remove("light");
         document.querySelector('.mainContainer').classList.remove("light");
-        document.querySelector('.whatNumber').classList.remove("light");
+        document.querySelectorAll(".answerButtonWrap .label").forEach(label => label.classList.remove("light"));
         if (!"#startGame") {
             document.querySelector('#startGame').classList.remove("light");
         }
     }
 }
 
-
 //Dark light mode button
 darkLightInput.addEventListener("change",()=> darkLight());
 
+
+//Background animation enable/disable
+let object = document.querySelectorAll(".backgroundObject")
+let disableAnimation = document.querySelector("#disableAnimation")
+
+disableAnimation.addEventListener("change",() => {
+    if(disableAnimation.checked){
+        object.forEach(object => object.style.animation = "none");
+        document.querySelector(".animationButton label").style.backgroundImage = "url('images/sitting.svg')";
+    }else{
+        object.forEach((object, i) => {
+            object.style.animation = "goDown linear 40s infinite";
+            if(i<5){
+                object.style.animationDelay = "0s";
+            }else if(i>5 && i<11){
+                object.style.animationDelay = "10s";
+            }else if(i>11 && i<16){
+                object.style.animationDelay = "20s";
+            }else {
+                object.style.animationDelay = "30s"
+            }
+        });
+        document.querySelector(".animationButton label").style.backgroundImage = "url('images/running.svg')";
+    }
+})
+
+//Music emable/disable
+let enableMusic = document.querySelector("#music");
+let audio = new Audio("images/Sakura-Girl-Daisy-chosic.com_.mp3")
+enableMusic.addEventListener("change",()=>{
+    if(enableMusic.checked){
+        audio.play();
+        audio.loop = true;
+    }else{
+        audio.pause();
+    }
+})
