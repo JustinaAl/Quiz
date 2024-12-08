@@ -34,37 +34,6 @@ header{
     }
 }
 
-footer{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    backdrop-filter: blur(5px);
-    background: rgba(255, 255, 255, 0.20);
-    border-bottom: rgba(255, 255, 255, 0.2) 1px solid ;
-    margin-top: 120px;
-
-    
-    p{
-        padding: 0 10px;
-        font-size: 12px;
-    }
-    
-}
-
-#credits{
-    height: 30px;
-    text-align: center;
-    width: unset;
-    
-    a{
-        all: unset;
-        font-size: 14px;
-        width: 100%;
-        height: 100%;
-        padding-top: 10px;
-    }
-}
-
 button{
     font-family: "Gloria Hallelujah";
 }
@@ -144,7 +113,7 @@ div.mainContainer.first{
     button{
         width: 250px;
         height: 3.5em;
-        margin-bottom: 80px;
+        margin-bottom: 20px;
 
         span{
             font-size: 30px;
@@ -225,6 +194,10 @@ input{
     border: 1px solid #FFF;
 }
 
+.mainContainer.first .answerButtonWrap .label:not(:first-child){
+    height: 40px;
+}
+
 .answerButtonWrap .label:hover {
     background: rgba(35, 24, 107, 0.6);
     transform: scale(1.05);
@@ -243,11 +216,6 @@ button:not(.submit){
     border: 0;
     
 }
-
-#startGame{
-    margin-bottom: 20px;
-}
-
 
 button img:hover{
     transform: scale(1.5);
@@ -321,6 +289,8 @@ div.score.orange{
     color: white;
     margin: 0 15px;
 }
+
+
 
 h1{
     text-align: center;
@@ -545,13 +515,14 @@ div.score.orange.light{
     z-index: -1;
     background-color:transparent;
     width: 100%;
+    max-width: 100%;
     height: 100%;
  }
 
  .backgroundObject{
     position: absolute;
     opacity: 0.3;
-    width: 10vw;
+    width: 9vw;
     animation: goDown linear 40s infinite;
  }
 
@@ -687,12 +658,75 @@ div.score.orange.light{
 
     75%{
         rotate: 10deg;
+    }
+
+    87%{
         opacity: 0.3;
     }
 
     100%{
         rotate: -10deg;
         opacity: 0;
-        transform: translateY(110vh);
+        transform: translateY(100vh);
     }
+ }
+
+ ul{
+    width: 80%;
+ }
+ 
+ .rules{
+    font-size: 25px;
+    color: white;
+    padding-bottom: 30px;
+ }
+
+ #goBack{
+    display: flex;
+    align-content: center;
+    color: white;
+    background: rgba(255, 255, 255, 0.30);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    height: 40px;
+    text-align: center;
+    width: 120px;
+    border-radius: 6px;
+    border: 1px solid #FFF;
+    
+    a{
+        all: unset;
+        display: block;
+        font-size: 25px;
+        color: white;
+        cursor: pointer;
+        width: 100%;
+        padding-top: 5px;
+    }
+ }
+
+ #goBack:hover{
+    transform: scale(1.2);
+ }
+
+ .label.r a.light{
+    color: #943434;
+ }
+
+
+ .label.r{
+    width: unset;
+    margin-bottom: 20px;
+
+    a{
+        color: white;
+        text-decoration: none;
+        font-family:"Gloria Hallelujah" ;
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+    }
+ }
+
+ .mainContainer.first .answerButtonWrap{
+    gap: 20px;
  }

@@ -110,6 +110,10 @@ function countPoints() {
                         }
                     })
                 }
+                if(chechedValues[a].length>rightAnswers[a].length){
+                    let minusPoints = (chechedValues[a].length) - (rightAnswers[a].length);
+                    points -= minusPoints*2;
+                }
             } else if (rightArray.includes(chosenArray)) {
                 points++;
             }
@@ -316,12 +320,16 @@ function darkLight(){
         document.querySelector('header').classList.add("light");
         document.querySelector('.mainContainer').classList.add("light");
         document.querySelectorAll(".answerButtonWrap .label").forEach(label => label.classList.add("light"));
+        document.querySelectorAll(".label.r a").forEach(label => label.classList.add("light"));
+        document.querySelector(".whatNumber").classList.add("light");
     }
     else{
         body.classList.remove("light");
         document.querySelector('header').classList.remove("light");
         document.querySelector('.mainContainer').classList.remove("light");
         document.querySelectorAll(".answerButtonWrap .label").forEach(label => label.classList.remove("light"));
+        document.querySelectorAll(".label.r a").forEach(label => label.classList.remove("light"));
+        document.querySelector(".whatNumber").classList.remove("light");
         if (!"#startGame") {
             document.querySelector('#startGame').classList.remove("light");
         }
