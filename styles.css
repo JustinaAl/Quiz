@@ -17,7 +17,7 @@ header{
     border-bottom: rgba(255, 255, 255, 0.2) 1px solid ;
 
 
-    a.dark{
+    a{
         all: unset;
         cursor: pointer;
         color: #FFF;
@@ -27,6 +27,7 @@ header{
     }
 
     div{
+        height: 100%;
         margin:0 10px 0 20px;
         display: flex;
         justify-content: space-between;
@@ -379,102 +380,145 @@ button.submit:hover{
 
 body.light{
     background: radial-gradient(68.97% 68.73% at 50% 50%, #FFEFED 11.5%, #FDD6D2 66.5%, #FBB4AD 100%);
-}
-header.light{
-    background: linear-gradient(112deg, rgba(236, 192, 192, 0.60) 26.69%, rgba(255, 236, 236, 0.60) 68.65%);
-    box-shadow: rgba(231, 133, 133, 0.181) 0px 20px 20px -5px, rgba(183, 104, 104, 0.127) 0px 10px 10px -5px;
-    opacity: 0.8;
-    a{
-        color: #710808;
+
+    header{
+        background: linear-gradient(112deg, rgba(236, 192, 192, 0.60) 26.69%, rgba(255, 236, 236, 0.60) 68.65%);
+        box-shadow: rgba(231, 133, 133, 0.181) 0px 20px 20px -5px, rgba(183, 104, 104, 0.127) 0px 10px 10px -5px;
+        opacity: 0.8;
+        a{
+            color: #710808;
+        }
     }
-}
 
-.whatNumber.light{
-    color: #5f1313;
-}
-
-p.light{
-    color: rgb(49, 0, 82);
-    text-shadow: 2px 2px 15px rgba(41, 6, 65, 0.49);
-}
-
-div.mainContainer.light{
-    background: linear-gradient(150deg, rgba(255, 90, 90, 0.282) 26.69%, rgba(255, 186, 186, 0.414) 68.65%);
-    opacity: 0.6;
-    border: 1px solid rgba(207, 118, 118, 0.277);
-
-    h1{
+    .whatNumber{
         color: #5f1313;
     }
 
-}
+    p{
+        color: rgb(49, 0, 82);
+        text-shadow: 2px 2px 15px rgba(41, 6, 65, 0.49);
+    }
 
-.mainContainer.first.light span{
-    color: #943434;
-}
+    div.mainContainer{
+        background: linear-gradient(150deg, rgba(255, 90, 90, 0.282) 26.69%, rgba(255, 186, 186, 0.414) 68.65%);
+        opacity: 0.6;
+        border: 1px solid rgba(207, 118, 118, 0.277);
+    
+        h1{
+            color: #5f1313;
+        }
+    
+    }
 
-.mainContainer.first.light button{
-    border: 1px solid #5f1313;
-}
+    .mainContainer.first span{
+        color: #943434;
+    }
+    
+    .mainContainer.first button{
+        border: 1px solid #5f1313;
+    }
 
-.mainContainer.first.light button:hover{
-    background: rgba(113, 1, 150, 0.315);
-
-     span{
+    .mainContainer.first button:hover{
+        background: rgba(113, 1, 150, 0.315);
+    
+         span{
+            color: white;
+         }
+    }
+    
+    .answerButtonWrap .label{
+        color: rgb(113, 7, 7);
+        border: #7108083e 1px solid;
+    }
+    
+    .answerButtonWrap .label:hover{
+        background-color:rgba(113, 1, 150, 0.315);
         color: white;
+    }
+    
+    input:checked + .label{
+        background-color:rgba(113, 1, 150, 0.315);
+        color: white;
+    }
+
+    .mainContainer.results{
+        background: rgba(255, 170, 170, 0.5);
+    
+        h1{
+            color: rgb(107, 3, 3);
+        }
+        
+        p{
+            color: rgb(76, 0, 0);
+        }
+    }
+    
+    div.score.orange{
+        color: rgb(210, 113, 21);
+    
+        p{
+            color: orange;
+        }
+    }
+    
+    #startGame{
+        color: rgb(76, 0, 0);
+        border: #8b222237 solid 1px;
+    }
+    
+    #startGame:hover{
+        color: white;
+    }
+    
+    .submit{
+        border: #8b222237 solid 1px;
+    }
+    .submit:hover{
+        transform: scale(1.2);
+    }
+
+    .label.r a{
+        color: #943434;
+     }
+
+     ul{
+        width: 80%;
+     }
+     
+     .rules{
+        font-size: 25px;
+        color: rgb(76, 0, 0);
+        padding-bottom: 30px;
+     }
+
+     #goBack{
+        display: flex;
+        align-content: center;
+        color: white;
+        background: rgba(255, 255, 255, 0.30);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        height: 40px;
+        text-align: center;
+        width: 120px;
+        border-radius: 6px;
+        border: 1px solid rgb(76, 0, 0);
+        
+        a{
+            all: unset;
+            display: block;
+            font-size: 25px;
+            color: rgb(76, 0, 0);
+            cursor: pointer;
+            width: 100%;
+            padding-top: 5px;
+        }
+     }
+    
+     #goBack:hover{
+        transform: scale(1.2);
      }
 }
 
-.answerButtonWrap .label.light{
-    color: rgb(113, 7, 7);
-    border: #7108083e 1px solid;
-}
-
-.answerButtonWrap .label.light:hover{
-    background-color:rgba(113, 1, 150, 0.315);
-    color: white;
-}
-
-input:checked + .label.light{
-    background-color:rgba(113, 1, 150, 0.315);
-    color: white;
-}
-
-.mainContainer.results.light{
-    background: rgba(255, 170, 170, 0.5);
-
-    h1{
-        color: rgb(107, 3, 3);
-    }
-    
-    p{
-        color: rgb(76, 0, 0);
-    }
-}
-
-div.score.orange.light{
-    color: rgb(210, 113, 21);
-
-    p{
-        color: orange;
-    }
-}
-
-#startGame.light{
-    color: rgb(76, 0, 0);
-    border: #8b222237 solid 1px;
-}
-
-#startGame.light:hover{
-    color: white;
-}
-
-.submit.light{
-    border: #8b222237 solid 1px;
-}
-.submit.light:hover{
-    transform: scale(1.2);
-}
 
 
 @media screen and (max-width: 400px){
@@ -708,9 +752,6 @@ div.score.orange.light{
     transform: scale(1.2);
  }
 
- .label.r a.light{
-    color: #943434;
- }
 
 
  .label.r{

@@ -50,34 +50,34 @@ let questionsAndAnswers=[{
     d:"d) Ensaimada"
 },{ 
     question:"11. Which of the following are types of laminated dough?",
-    a:"a) Croissant",
-    b:"b) Puff pastry",
-    c:"c) Shortcrust pastry",
-    d:"d) Danish pastry"
+    a:"Croissant",
+    b:"Puff pastry",
+    c:"Shortcrust pastry",
+    d:"Danish pastry"
 },{ 
     question:"12. Which ingredients are typically used in making choux pastry?",
-    a:"a) Flour",
-    b:"b) Butter",
-    c:"c) Eggs",
-    d:"d) Yeast"
+    a:"Flour",
+    b:"Butter",
+    c:"Eggs",
+    d:"Yeast"
 },{
     question:"13. Which of these pastries are often filled with frangipane (almond cream)?",
-    a:"a) Galette des Rois",
-    b:"b) Tarte Tatin",
-    c:"c) Almond croissant",
-    d:"d) Bakewell tart"
+    a:"Galette des Rois",
+    b:"Tarte Tatin",
+    c:"Almond croissant",
+    d:"Bakewell tart"
 },{
     question:"14. Which of these pastries are made using yeast dough?",
-    a:"a) Brioche",
-    b:"b) Choux Pastry",
-    c:"c) Pain au chocolat",
-    d:"d) Churros"
+    a:"Brioche",
+    b:"Choux Pastry",
+    c:"Pain au chocolat",
+    d:"Churros"
 },{
     question:"15. Which of the following are classic French pastries?",
-    a:"a) Éclair",
-    b:"b) Tarte Tatin",
-    c:"c) Cannoli",
-    d:"d) Madeleines"
+    a:"Éclair",
+    b:"Tarte Tatin",
+    c:"Cannoli",
+    d:"Madeleines"
 }];
 
 let body = document.querySelector("body");
@@ -85,7 +85,7 @@ let body = document.querySelector("body");
 let i = 0;
 let mainContainer = document.querySelector(".mainContainer");
 
-let rightAnswers =["False","False","False","False","True","c) Puff pastry","d) Almond flour","c) Shortcrust pastry","c) Butter","b) Mille-feuille",["a) Croissant","b) Puff pastry","d) Danish pastry"],["a) Flour", "b) Butter", "c) Eggs"],["a) Galette des Rois", "c) Almond croissant", "d) Bakewell tart"],["a) Brioche", "c) Pain au chocolat"],["a) Éclair", "b) Tarte Tatin", "d) Madeleines"]];
+let rightAnswers =["False","False","False","False","True","c) Puff pastry","d) Almond flour","c) Shortcrust pastry","c) Butter","b) Mille-feuille",[" Croissant"," Puff pastry"," Danish pastry"],[" Flour", " Butter", " Eggs"],[" Galette des Rois", " Almond croissant", " Bakewell tart"],[" Brioche", " Pain au chocolat"],[" Éclair", " Tarte Tatin", " Madeleines"]];
 let chechedValues =[];
 
 
@@ -97,27 +97,22 @@ let points = 0;
 
 function countPoints() {
     for (let a = 0; a < rightAnswers.length; a++) {
-        if (Array.isArray(rightAnswers[a])) {
-            let rightArray = rightAnswers[a];
-            let chosenArray = chechedValues[a];
-            let rightArrayNew = new Map([rightArray]);
-
+        if(Array.isArray(rightAnswers[a])){
             if (Array.isArray(chechedValues[a])) {
-                for (let y = 0; y < chechedValues[a].length; y++) {
-                    chosenArray.forEach(value => {
-                        if (rightArrayNew.has(value)) {
-                            points++;
-                        }
-                    })
-                }
-                if(chechedValues[a].length>rightAnswers[a].length){
-                    let minusPoints = (chechedValues[a].length) - (rightAnswers[a].length);
-                    points -= minusPoints*2;
-                }
-            } else if (rightArray.includes(chosenArray)) {
+                chechedValues[a].forEach(value =>{
+                    if(rightAnswers[a].includes(value)){
+                        points++;
+                    }else if(points>0){
+                        points--;
+                    }
+                })
+            }else if(rightAnswers[a].includes(chechedValues[a])){
                 points++;
+            }else if(points>0){
+                points--;
             }
-        } else if (rightAnswers[a] === chechedValues[a]) {
+
+        }else if(rightAnswers[a]===chechedValues[a]){
             points++;
         }
     }
@@ -133,7 +128,7 @@ function collectAnswers (){
         });
     }else{
         let allValues = [];
-        checked.forEach(value=>allValues.push(value.value));
+        checked.forEach(value=>allValues.push(" "+value.value));
         chechedValues.push(allValues);
     }
     
@@ -174,7 +169,7 @@ function theResults(){
 
         let correctAnswer = document.createElement("p");
         correctAnswer.classList.add("rightAnswer");
-        correctAnswer.innerHTML = `Correct answer: ${rightAnswers[x]} <p id="chosenAnswer">Your answer: ${chechedValues[x]}</p><hr>`;
+        correctAnswer.innerHTML = `Correct answer: ${rightAnswers[x]} <p id="chosenAnswer">Your answer: ${chechedValues[x]} </p><hr>`;
         
         questionBox.append(correctAnswer);
         allQuestions.append(questionBox);
@@ -196,23 +191,17 @@ function createAnswerButton(){
             //where only one answer is correct
             if(i<10){
                 answerButtonWrap.innerHTML = `
-                <input class="radio" type="radio" name="oneTrue" id="${value.slice(0, 2)}" value="${value}">
-                <label class="label" for="${value.slice(0, 2)}"><span>${value}</span></label>`;
+                <input class="radio" type="radio" name="oneTrue" id="${value.slice(0, 3)}" value="${value}">
+                <label class="label" for="${value.slice(0, 3)}"><span>${value}</span></label>`;
             //where multiple answers are correct
             }else{
                 answerButtonWrap.innerHTML = `
-                <input class="checkbox" type="checkbox" name="fewTrue" id="${value.slice(0, 2)}" value="${value}">
-                <label class="label" for="${value.slice(0, 2)}"><span>${value}</span></label>`;
+                <input class="checkbox" type="checkbox" name="fewTrue" id="${value.slice(0, 3)}" value="${value}">
+                <label class="label" for="${value.slice(0, 3)}"><span>${value}</span></label>`;
             }
             document.querySelector(".answerContainer").append(answerButtonWrap);
         }
     });
-
-        //dark light mode thing
-        if(darkLightInput.checked){
-            document.querySelectorAll('div.answerButtonWrap .label').forEach(label =>{label.classList.add("light")});
-            document.querySelector('.whatNumber').classList.add("light");
-        }
 }
 
 
@@ -242,10 +231,6 @@ function buttonNext() {
             submit.classList.add("submit");
             submit.textContent = "Submit the answers";
             mainContainer.append(submit);
-
-            if(darkLightInput.checked){
-                submit.classList.add("light");
-            }
         }
         }
         
@@ -303,7 +288,6 @@ submit.addEventListener("click",() => {
     countPoints();
     theResults();
     colourResult();
-    
 });
 
 //Starts the game
@@ -312,32 +296,15 @@ document.querySelector("#startGame").addEventListener("click",()=>{
     createNewQuestion(questionsAndAnswers[i].question);
 });
 
-
-//Dark light function
-function darkLight(){
+//Dark light mode button
+darkLightInput.addEventListener("change",()=> {
     if(darkLightInput.checked){
         body.classList.add("light");
-        document.querySelector('header').classList.add("light");
-        document.querySelector('.mainContainer').classList.add("light");
-        document.querySelectorAll(".answerButtonWrap .label").forEach(label => label.classList.add("light"));
-        document.querySelectorAll(".label.r a").forEach(label => label.classList.add("light"));
-        document.querySelector(".whatNumber").classList.add("light");
     }
     else{
         body.classList.remove("light");
-        document.querySelector('header').classList.remove("light");
-        document.querySelector('.mainContainer').classList.remove("light");
-        document.querySelectorAll(".answerButtonWrap .label").forEach(label => label.classList.remove("light"));
-        document.querySelectorAll(".label.r a").forEach(label => label.classList.remove("light"));
-        document.querySelector(".whatNumber").classList.remove("light");
-        if (!"#startGame") {
-            document.querySelector('#startGame').classList.remove("light");
-        }
     }
-}
-
-//Dark light mode button
-darkLightInput.addEventListener("change",()=> darkLight());
+});
 
 
 //Background animation enable/disable
