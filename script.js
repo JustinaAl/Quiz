@@ -296,13 +296,24 @@ document.querySelector("#startGame").addEventListener("click",()=>{
     createNewQuestion(questionsAndAnswers[i].question);
 });
 
+
+if (localStorage.getItem('DarkLightMode') === 'light') {
+    body.classList.add('light');
+    darkLightInput.checked = true;
+} else {
+    body.classList.remove('light');
+    darkLightInput.checked = false;
+}
+
 //Dark light mode button
 darkLightInput.addEventListener("change",()=> {
     if(darkLightInput.checked){
         body.classList.add("light");
+        localStorage.setItem('DarkLightMode', 'light');
     }
     else{
         body.classList.remove("light");
+        localStorage.removeItem('DarkLightMode', 'light');
     }
 });
 

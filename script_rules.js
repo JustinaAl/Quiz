@@ -1,5 +1,13 @@
 let body = document.querySelector('body');
 
+if (localStorage.getItem('DarkLightMode') === 'light') {
+    body.classList.add('light');
+    darkLightInput.checked = true;
+} else {
+    body.classList.remove('light');
+    darkLightInput.checked = false;
+}
+
 //Dark light function
 function darkLight(){
     if(darkLightInput.checked){
