@@ -460,6 +460,7 @@ body.light{
             color: orange;
         }
     }
+
     
     #startGame{
         color: rgb(76, 0, 0);
@@ -479,6 +480,10 @@ body.light{
 
     .label.r a{
         color: #943434;
+     }
+
+     .label.r a:hover{
+        color: white;
      }
 
      ul{
