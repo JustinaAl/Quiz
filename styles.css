@@ -63,6 +63,10 @@ div.mainContainer{
     mask:
     linear-gradient(#000 0 0) content-box, 
     linear-gradient(#000 0 0);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     .questionContainer{
         display: flex;
@@ -556,6 +560,55 @@ body.light{
     div.mainContainer.first button{
         font-size: 20px;
     }
+
+    p{font-size: 26px !important;}
+
+    label span{ font-size: 16px !important;}
+
+    label{
+        height: fit-content !important;
+        padding: 12px;
+        min-width: 40% !important;
+        max-width: 100px;
+    }
+
+    .answerContainer{
+        gap: 12px;
+    }
+
+    a{
+        font-size: 24px !important;
+    }
+
+    .nextButtonImg{
+        rotate: 20% !important;
+    }
+
+    #darkLightLabel{
+        max-width: 25px !important;
+    }
+
+    div.mainContainer.results {
+    display: flex;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: 55% !important;
+    margin: 0 !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    overflow: auto !important; /* enables scrolling */
+    max-height: 70vh !important; /* use viewport height unit to ensure it respects screen height */
+    max-width: 100% !important;
+    width: 90% !important;
+    padding: 1rem !important; /* optional: add spacing */
+    box-sizing: border-box !important;
+    flex-wrap: nowrap;
+
+    p{
+        font-size: 20px !important;
+    }
+}
+
 }
 
 /* Background animation */
@@ -563,9 +616,8 @@ body.light{
     position: absolute;
     z-index: -1;
     background-color:transparent;
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
  }
 
  .backgroundObject{
@@ -577,117 +629,361 @@ body.light{
 
  .backgroundObject:first-of-type{
     left: 2%;
-    top: -20%;
+    top: -12%;
  }
 
  .backgroundObject:nth-of-type(2){
     left: 20%;
-    top: -20%;
+    top: -12%;
  }
 
  .backgroundObject:nth-of-type(3){
     left: 40%;
-    top: -20%;
+    top: -12%;
  }
 
  .backgroundObject:nth-of-type(4){
     left: 60%;
-    top: -20%;
+    top: -12%;
  }
 
  .backgroundObject:nth-of-type(5){
     left: 80%;
-    top: -20%;
+    top: -12%;
  }
 
  .backgroundObject:nth-of-type(6){
     left: 2%;
-    top: -20%;
+    top: -12%;
     animation-delay: 10s;
  }
 
  .backgroundObject:nth-of-type(7){
     left: 20%;
-    top: -20%;
+    top: -12%;
     animation-delay: 10s;
  }
 
  .backgroundObject:nth-of-type(8){
     left: 40%;
-    top: -20%;
+    top: -12%;
     animation-delay: 10s;
  }
 
  .backgroundObject:nth-of-type(9){
     left: 60%;
-    top: -20%;
+    top: -12%;
     animation-delay: 10s;
  }
 
  .backgroundObject:nth-of-type(10){
     left: 80%;
-    top: -20%;
+    top: -12%;
     animation-delay: 10s;
  }
 
  .backgroundObject:nth-of-type(11){
     left: 2%;
-    top: -20%;
+    top: -12%;
     animation-delay: 20s;
  }
 
  .backgroundObject:nth-of-type(12){
     left: 20%;
-    top: -20%;
+    top: -12%;
     animation-delay: 20s;
  }
 
  .backgroundObject:nth-of-type(13){
     left: 40%;
-    top: -20%;
+    top: -12%;
     animation-delay: 20s;
  }
 
  .backgroundObject:nth-of-type(14){
     left: 60%;
-    top: -20%;
+    top: -12%;
     animation-delay: 20s;
  }
 
  .backgroundObject:nth-of-type(15){
     left: 80%;
-    top: -20%;
+    top: -12%;
     animation-delay: 20s;
  }
 
  .backgroundObject:nth-of-type(16){
     left: 2%;
-    top: -20%;
+    top: -12%;
     animation-delay: 30s;
  }
 
  .backgroundObject:nth-of-type(17){
     left: 20%;
-    top: -20%;
+    top: -12%;
     animation-delay: 30s;
  }
 
  .backgroundObject:nth-of-type(18){
     left: 40%;
-    top: -20%;
+    top: -12%;
     animation-delay: 30s;
  }
 
  .backgroundObject:nth-of-type(19){
     left: 60%;
-    top: -20%;
+    top: -12%;
     animation-delay: 30s;
  }
 
  .backgroundObject:nth-of-type(20){
     left: 80%;
-    top: -20%;
+    top: -12%;
     animation-delay: 30s;
+ } 
+
+.backgroundObject:nth-of-type(n+21):nth-of-type(-n+40) {
+  display: none;
+}
+
+
+
+
+
+ @media(max-width: 700px){
+    .backgroundObject:nth-of-type(n):nth-of-type(-n+40) {
+     display: block;
+}
+
+    .backgroundObject:first-of-type{
+    left: 2%;
+    top: -5%;
+ }
+
+ .backgroundObject:nth-of-type(2){
+    left: 20%;
+    top: -5%;
+ }
+
+ .backgroundObject:nth-of-type(3){
+    left: 40%;
+    top: -5%;
+ }
+
+ .backgroundObject:nth-of-type(4){
+    left: 60%;
+    top: -5%;
+ }
+
+ .backgroundObject:nth-of-type(5){
+    left: 80%;
+    top: -5%;
+ }
+
+ .backgroundObject:nth-of-type(6){
+    left: 2%;
+    top: -5%;
+    animation-delay: 5s;
+ }
+
+ .backgroundObject:nth-of-type(7){
+    left: 20%;
+    top: -5%;
+    animation-delay: 5s;
+ }
+
+ .backgroundObject:nth-of-type(8){
+    left: 40%;
+    top: -5%;
+    animation-delay: 5s;
+ }
+
+ .backgroundObject:nth-of-type(9){
+    left: 60%;
+    top: -5%;
+    animation-delay: 5s;
+ }
+
+ .backgroundObject:nth-of-type(10){
+    left: 80%;
+    top: -5%;
+    animation-delay: 5s;
+ }
+
+ .backgroundObject:nth-of-type(11){
+    left: 2%;
+    top: -5%;
+    animation-delay: 10s;
+ }
+
+ .backgroundObject:nth-of-type(12){
+    left: 20%;
+    top: -5%;
+    animation-delay: 10s;
+ }
+
+ .backgroundObject:nth-of-type(13){
+    left: 40%;
+    top: -5%;
+    animation-delay: 10s;
+ }
+
+ .backgroundObject:nth-of-type(14){
+    left: 60%;
+    top: -5%;
+    animation-delay: 10s;
+ }
+
+ .backgroundObject:nth-of-type(15){
+    left: 80%;
+    top: -5%;
+    animation-delay: 10s;
+ }
+
+ .backgroundObject:nth-of-type(16){
+    left: 2%;
+    top: -5%;
+    animation-delay: 15s;
+}
+
+.backgroundObject:nth-of-type(17){
+    left: 20%;
+    top: -5%;
+    animation-delay: 15s;
+}
+
+.backgroundObject:nth-of-type(18){
+    left: 40%;
+    top: -5%;
+    animation-delay: 15s;
+}
+
+.backgroundObject:nth-of-type(19){
+    left: 60%;
+    top: -5%;
+    animation-delay: 15s;
+}
+
+.backgroundObject:nth-of-type(20){
+    left: 80%;
+    top: -5%;
+    animation-delay: 15s;
+}
+
+.backgroundObject:nth-of-type(21){
+    left: 20%;
+    top: -5%;
+    animation-delay: 20s;
+}
+
+.backgroundObject:nth-of-type(23){
+    left: 40%;
+    top: -5%;
+    animation-delay: 20s;
+}
+
+.backgroundObject:nth-of-type(24){
+    left: 60%;
+    top: -5%;
+    animation-delay: 20s;
+}
+
+.backgroundObject:nth-of-type(25){
+    left: 80%;
+    top: -5%;
+    animation-delay: 20s;
+}
+
+.backgroundObject:nth-of-type(26){
+    left: 2%;
+    top: -5%;
+    animation-delay: 25s;
+}
+
+.backgroundObject:nth-of-type(27){
+    left: 20%;
+    top: -5%;
+    animation-delay: 25s;
+}
+
+.backgroundObject:nth-of-type(28){
+    left: 40%;
+    top: -5%;
+    animation-delay: 25s;
+}
+
+.backgroundObject:nth-of-type(29){
+    left: 60%;
+    top: -5%;
+    animation-delay: 25s;
+}
+
+.backgroundObject:nth-of-type(30){
+    left: 80%;
+    top: -5%;
+    animation-delay: 25s;
+}
+
+.backgroundObject:nth-of-type(31){
+    left: 2%;
+    top: -5%;
+    animation-delay: 30s;
+}
+
+.backgroundObject:nth-of-type(32){
+    left: 20%;
+    top: -5%;
+    animation-delay: 30s;
+}
+
+.backgroundObject:nth-of-type(33){
+    left: 40%;
+    top: -5%;
+    animation-delay: 30s;
+}
+
+.backgroundObject:nth-of-type(34){
+    left: 60%;
+    top: -5%;
+    animation-delay: 30s;
+}
+
+.backgroundObject:nth-of-type(35){
+    left: 80%;
+    top: -5%;
+    animation-delay: 30s;
+}
+
+.backgroundObject:nth-of-type(36){
+    left: 2%;
+    top: -5%;
+    animation-delay: 35s;
+}
+
+.backgroundObject:nth-of-type(37){
+    left: 20%;
+    top: -5%;
+    animation-delay: 35s;
+}
+
+.backgroundObject:nth-of-type(38){
+    left: 40%;
+    top: -5%;
+    animation-delay: 35s;
+}
+
+.backgroundObject:nth-of-type(39){
+    left: 60%;
+    top: -5%;
+    animation-delay: 35s;
+}
+
+.backgroundObject:nth-of-type(40){
+    left: 80%;
+    top: -5%;
+    animation-delay: 35s;
+}
+
  }
 
 
@@ -716,7 +1012,7 @@ body.light{
     100%{
         rotate: -10deg;
         opacity: 0;
-        transform: translateY(100vh);
+        transform: translateY(120vh);
     }
  }
 

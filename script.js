@@ -290,8 +290,21 @@ submit.addEventListener("click",() => {
     colourResult();
 });
 
+//Music emable/disable
+let enableMusic = document.querySelector("#music");
+let audio = new Audio("images/Sakura-Girl-Daisy-chosic.com_.mp3");
+enableMusic.addEventListener("change",()=>{
+    if(enableMusic.checked){
+        audio.play();
+        audio.loop = true;
+    }else{
+        audio.pause();
+    }
+})
+
 //Starts the game
 document.querySelector("#startGame").addEventListener("click",()=>{
+    audio.play();
     document.querySelector(".mainContainer").classList.remove("first");
     createNewQuestion(questionsAndAnswers[i].question);
 });
@@ -343,14 +356,5 @@ disableAnimation.addEventListener("change",() => {
     }
 })
 
-//Music emable/disable
-let enableMusic = document.querySelector("#music");
-let audio = new Audio("images/Sakura-Girl-Daisy-chosic.com_.mp3")
-enableMusic.addEventListener("change",()=>{
-    if(enableMusic.checked){
-        audio.play();
-        audio.loop = true;
-    }else{
-        audio.pause();
-    }
-})
+
+
