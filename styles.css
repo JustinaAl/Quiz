@@ -629,116 +629,116 @@ body.light{
 
  .backgroundObject:first-of-type{
     left: 2%;
-    top: -12%;
+    top: -20%;
  }
 
  .backgroundObject:nth-of-type(2){
     left: 20%;
-    top: -12%;
+    top: -20%;
  }
 
  .backgroundObject:nth-of-type(3){
     left: 40%;
-    top: -12%;
+    top: -20%;
  }
 
  .backgroundObject:nth-of-type(4){
     left: 60%;
-    top: -12%;
+    top: -20%;
  }
 
  .backgroundObject:nth-of-type(5){
     left: 80%;
-    top: -12%;
+    top: -20%;
  }
 
  .backgroundObject:nth-of-type(6){
     left: 2%;
-    top: -12%;
+    top: -20%;
     animation-delay: 10s;
  }
 
  .backgroundObject:nth-of-type(7){
     left: 20%;
-    top: -12%;
+    top: -20%;
     animation-delay: 10s;
  }
 
  .backgroundObject:nth-of-type(8){
     left: 40%;
-    top: -12%;
+    top: -20%;
     animation-delay: 10s;
  }
 
  .backgroundObject:nth-of-type(9){
     left: 60%;
-    top: -12%;
+    top: -20%;
     animation-delay: 10s;
  }
 
  .backgroundObject:nth-of-type(10){
     left: 80%;
-    top: -12%;
+    top: -20%;
     animation-delay: 10s;
  }
 
  .backgroundObject:nth-of-type(11){
     left: 2%;
-    top: -12%;
+    top: -20%;
     animation-delay: 20s;
  }
 
  .backgroundObject:nth-of-type(12){
     left: 20%;
-    top: -12%;
+    top: -20%;
     animation-delay: 20s;
  }
 
  .backgroundObject:nth-of-type(13){
     left: 40%;
-    top: -12%;
+    top: -20%;
     animation-delay: 20s;
  }
 
  .backgroundObject:nth-of-type(14){
     left: 60%;
-    top: -12%;
+    top: -20%;
     animation-delay: 20s;
  }
 
  .backgroundObject:nth-of-type(15){
     left: 80%;
-    top: -12%;
+    top: -20%;
     animation-delay: 20s;
  }
 
  .backgroundObject:nth-of-type(16){
     left: 2%;
-    top: -12%;
+    top: -20%;
     animation-delay: 30s;
  }
 
  .backgroundObject:nth-of-type(17){
     left: 20%;
-    top: -12%;
+    top: -20%;
     animation-delay: 30s;
  }
 
  .backgroundObject:nth-of-type(18){
     left: 40%;
-    top: -12%;
+    top: -20%;
     animation-delay: 30s;
  }
 
  .backgroundObject:nth-of-type(19){
     left: 60%;
-    top: -12%;
+    top: -20%;
     animation-delay: 30s;
  }
 
  .backgroundObject:nth-of-type(20){
     left: 80%;
-    top: -12%;
+    top: -20%;
     animation-delay: 30s;
  } 
 
